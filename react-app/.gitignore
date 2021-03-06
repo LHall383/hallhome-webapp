@@ -11,6 +11,9 @@
 # production
 /build
 
+# configuration file for push-to-server command
+push-to-server.json
+
 # misc
 .DS_Store
 .env.local
