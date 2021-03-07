@@ -1,0 +1,55 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.App {
+  min-height: 100vh;
+  text-align: center;
+  background-color: #30404d;
+}
+
+.App-header {
+  min-height: 5vh;
+}
+
+.App-body {
+  min-height: 90vh;
+}
+
+.App-body-title {
+  padding-top: 20px;
+}
+
+.App-footer {
+  min-height: 5vh;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.App-footer-text {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  color: lightgray
+}
+
+.card-container {
+  --width: 70%;
+  width: var(--width);
+  margin-left: calc( ( 100% - var(--width) ) / 2 );
+  margin-right: calc( ( 100% - var(--width) ) / 2 );
+  text-align: left;
+}
+
+.card-spacer {
+  height: 20px;
+}
+
+.card-header {
+  color: $forest5;
+}
+
+.card-text {
+  color: $forest4;
+}

@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.40.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.0"
   },
@@ -17,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-push": "react-scripts build && python push-to-server.py",
-    "push-to-server": "python push-to-server.py" 
+    "push-to-server": "python push-to-server.py"
   },
   "eslintConfig": {
     "extends": [
