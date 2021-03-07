@@ -1,55 +1,59 @@
-import './App.css';
+import './App.scss';
 
 import {
   Alignment,
-  Card,
-  Elevation,
   Navbar,
   Text,
   Icon,
-  H1,
-  H4
 } from "@blueprintjs/core";
 import "@blueprintjs/icons";
 
-function App() {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom'
+
+import Home from './pages/Home';
+import MusicAnalysis from './pages/MusicAnalysis';
+
+export default function App() {
   return (
-    <div className="App bp3-dark">
-      <div className="App-header">
-        <Navbar fixedToTop="true">
-            <Navbar.Group align={Alignment.LEFT}>
-                <Navbar.Heading>The Hall Home</Navbar.Heading>
-                <Navbar.Divider />
-                <a className="bp3-button bp3-minimal" href="/">
-                  <Icon icon="home"></Icon>
-                  <Text>Home</Text>
-                </a>
-            </Navbar.Group>
-        </Navbar>
-      </div>
-      
-      <div className="App-body">
-        <H1>The Hall Home</H1>
+    <Router>
 
-        <div className="card-container">
-          <Card elevation={Elevation.TWO}>
-            <H4 className="bp3-heading">Nextcloud File Storage</H4>
-            <p>
-              Nextcloud is a file hosting interface for multiple users to view, store and share files. 
-              To log in to our Nextcloud, head on over to <a href="https://cloud.thehallho.me">https://cloud.thehallho.me</a> 
-            </p>
-          </Card>
+      <div className="App bp3-dark">
+        <div className="App-header">
+          <Navbar>
+              <Navbar.Group align={Alignment.LEFT}>
+                  <Navbar.Heading>The Hall Home</Navbar.Heading>
+                  <Navbar.Divider />
+                  <Link className="bp3-button bp3-minimal" to="/">
+                    <Icon icon="home"></Icon>
+                    <Text>Home</Text>
+                  </Link>
+              </Navbar.Group>
+          </Navbar>
         </div>
 
+        <div className="App-body">
+          <Switch>
+            <Route path="/music-analysis">
+              <MusicAnalysis/>
+            </Route>
+            <Route path="/">
+              <Home/>
+            </Route>
+          </Switch>
+        </div>
+
+        <footer className="App-footer">
+          <div className="App-footer-text">
+            Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+          </div>
+        </footer>
       </div>
 
-      <footer className="App-footer">
-        <div className="App-footer-text">
-          Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
-      </footer>
-    </div>
+    </Router>
   );
 }
-
-export default App;

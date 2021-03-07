@@ -1,3 +1,5 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
 .App {
   min-height: 100vh;
   text-align: center;
@@ -10,6 +12,10 @@
 
 .App-body {
   min-height: 90vh;
+}
+
+.App-body-title {
+  padding-top: 20px;
 }
 
 .App-footer {
@@ -34,4 +40,16 @@
   margin-left: calc( ( 100% - var(--width) ) / 2 );
   margin-right: calc( ( 100% - var(--width) ) / 2 );
   text-align: left;
+}
+
+.card-spacer {
+  height: 20px;
+}
+
+.card-header {
+  color: $forest5;
+}
+
+.card-text {
+  color: $forest4;
 }
