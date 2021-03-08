@@ -1,0 +1,14 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "Lucas Hall",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

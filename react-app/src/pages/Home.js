@@ -1,7 +1,6 @@
 import {
   Card,
   Elevation,
-  Text,
   H1,
   H4,
   Colors,
@@ -41,7 +40,7 @@ export default function Home() {
         
         <Link to="/music-analysis">
           <Card interactive="true" elevation={Elevation.TWO}>
-            <H4 style={cardHeaderStyle}>Spotify Listening Analysis</H4>
+            <H4 style={cardHeaderStyle}>Spotify Music Analysis</H4>
             <p style={cardTextStyle}>
               This is an analysis tool that allows a user to log in and view their Spotify listening statistics.
             </p>
