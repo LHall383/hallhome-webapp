@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "push": "python push-to-server.py"
   },
   "keywords": [],
   "author": "Lucas Hall",
