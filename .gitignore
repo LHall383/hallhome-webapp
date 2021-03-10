@@ -1,18 +1,24 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# ignore installed node moduels
 /node_modules
-/.pnp
-.pnp.js
+/react-app/node_modules
+/server/node_modules
+
+# other dependencies
+/react-app/.pnp
+/react-app/.pnp.js
 
 # testing
-/coverage
+/*/coverage
 
 # production
-/build
+/*/build
 
 # configuration file for push-to-server command
 push-to-server.json
+
+# python files
+/__pycache__
+.pyc
 
 # misc
 .DS_Store

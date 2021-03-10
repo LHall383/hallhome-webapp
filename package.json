@@ -1,0 +1,23 @@
+{
+  "name": "hallhome-webapp",
+  "version": "1.0.0",
+  "description": "Web app for https://thehallho.me",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
+    "start-server": "cd server && npm run start",
+    "start-client": "cd react-app && npm run start",
+    "deploy": "npm run deploy-server && npm run deploy-client",
+    "deploy-server": "cd server && npm run push",
+    "deploy-client": "cd react-app && npm run build-push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LHall383/hallhome-webapp.git"
+  },
+  "author": "Lucas Hall",
+  "bugs": {
+    "url": "https://github.com/LHall383/hallhome-webapp/issues"
+  },
+  "homepage": "https://github.com/LHall383/hallhome-webapp#readme"
+}
