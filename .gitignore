@@ -16,6 +16,9 @@
 # configuration file for push-to-server command
 push-to-server.json
 
+# environment variables for server
+/server/.env
+
 # python files
 /__pycache__
 .pyc
