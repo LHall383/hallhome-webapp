@@ -1,11 +1,8 @@
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 const qs = require('qs');
 require('dotenv').config();
-
-const PORT = process.env.PORT || 3001;
-
-const app = express();
 
 const getAuth = async () => {
   try {
@@ -49,22 +46,37 @@ const getUserPublic = async (username, bearerToken) => {
   }
 }
 
+const PORT = process.env.PORT || 3001;
+
+const app = express();
+app.use(cors());
+
 app.get("/test", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
 app.get("/cc-auth-test", async (req, res) => {
-  console.log('client credentials auth test')
+  console.log('\n\nclient credentials auth test')
 
   const authData = await getAuth();
   res.json(authData);
 });
 
 app.get("/user-public-test", async (req, res) => {
-  console.log('public user data test');
+  console.log('\n\npublic user data test');
 
   const authData = await getAuth();
   const userData = await getUserPublic('jmperezperez', authData.access_token);
+  res.setHeader('Access-Control-Allow-Origin', '\*');
+  res.json(userData);
+});
+
+app.get("/user-public", async (req, res) => {
+  console.log('\n\npublic user data for: ' + req.query.username);
+  console.log(req.query);
+
+  const authData = await getAuth();
+  const userData = await getUserPublic(req.query.username, authData.access_token);
   res.json(userData);
 });
 
