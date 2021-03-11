@@ -1,15 +1,7 @@
-import {
-  Card,
-  Elevation,
-  H1,
-  H4,
-  Colors,
-} from "@blueprintjs/core";
+import { Card, Elevation, H1, H4, Colors } from "@blueprintjs/core";
 import "@blueprintjs/icons";
   
-import {
-  Link,
-} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const linkNextcloud = function(){
   window.location.replace("http://cloud.thehallho.me");
@@ -49,4 +41,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
