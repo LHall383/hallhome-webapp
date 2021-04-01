@@ -6,7 +6,11 @@ import { Button, H1, InputGroup, Text } from "@blueprintjs/core";
 import "@blueprintjs/icons";
 
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3001";
+if (process.env.NODE_ENV === 'production') { 
+  axios.defaults.baseURL = "https://thehallho.me/api";
+}else if(process.env.NODE_ENV === 'development') {
+  axios.defaults.baseURL = "http://localhost:3001/";
+}
 
 export default class MusicAnalysis extends React.PureComponent {
   constructor(props) {
@@ -43,7 +47,9 @@ export default class MusicAnalysis extends React.PureComponent {
     })
     .then((response) => {
       console.log(response.data);
-      this.setState({publicUserData: response.data, publicUserDataValid: true});
+      if(response.data){
+        this.setState({publicUserData: response.data, publicUserDataValid: true});
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -65,11 +71,11 @@ export default class MusicAnalysis extends React.PureComponent {
           <Button icon="import" onClick={this.handleGetPublicUserData}>Get Public User Data</Button>
         </div>
 
-        {this.state.publicUserDataValid &&
+        {this.state.publicUserDataValid && this.state.publicUserData &&
           <div>
             {/* <Text>{JSON.stringify(this.state.publicUserData)}</Text> */}
-            <img src={this.state.publicUserData.images[0].url} alt={"Profile picture for"+this.state.publicUserData.display_name} height="250"></img>
-            <Text>{this.state.publicUserData.display_name}</Text>
+            {this.state.publicUserData.images.length > 0 && <img src={this.state.publicUserData.images[0].url} alt={"Profile picture for"+this.state.publicUserData.display_name} height="250"></img>}
+            <Text>{this.state.publicUserData.display_name} - {this.state.publicUserData.followers.total} follower(s)</Text>
             <a href={this.state.publicUserData.external_urls.spotify}>{this.state.publicUserData.external_urls.spotify}</a>
           </div>
         }

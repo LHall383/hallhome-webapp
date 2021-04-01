@@ -62,15 +62,6 @@ app.get("/cc-auth-test", async (req, res) => {
   res.json(authData);
 });
 
-app.get("/user-public-test", async (req, res) => {
-  console.log('\n\npublic user data test');
-
-  const authData = await getAuth();
-  const userData = await getUserPublic('jmperezperez', authData.access_token);
-  res.setHeader('Access-Control-Allow-Origin', '\*');
-  res.json(userData);
-});
-
 app.get("/user-public", async (req, res) => {
   console.log('\n\npublic user data for: ' + req.query.username);
   console.log(req.query);

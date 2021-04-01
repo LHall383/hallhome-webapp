@@ -1,5 +1,6 @@
 {
   "name": "react-app",
+  "homepage": "https://thehallho.me",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
