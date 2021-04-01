@@ -1,22 +1,12 @@
-import './App.scss';
+import "./App.scss";
 
-import {
-  Alignment,
-  Navbar,
-  Text,
-  Icon,
-} from "@blueprintjs/core";
+import { Alignment, Navbar, Text, Icon } from "@blueprintjs/core";
 import "@blueprintjs/icons";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Home from './pages/Home';
-import MusicAnalysis from './pages/MusicAnalysis';
+import Home from "./pages/Home";
+import MusicAnalysis from "./pages/MusicAnalysis";
 
 export default function App() {
   return (
@@ -49,11 +39,11 @@ export default function App() {
 
         <footer className="App-footer">
           <div className="App-footer-text">
-            Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+            {/* Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> */}
           </div>
         </footer>
       </div>
 
     </Router>
   );
-}
+};

@@ -1,0 +1,11 @@
+{
+  "known_hosts": "",
+  "host_name": "",
+  "uname": "",
+  "pw": "",
+  "remote_client_build_dir": "",
+  "local_client_build_dir": "",
+  "remote_server_build_dir": "",
+  "local_server_build_dir": "",
+  "reload_cmd": ""
+}

@@ -1,0 +1,10 @@
+// input groups with buttons
+.input-with-button {
+  padding: 5px;
+  display: inline-flex;
+  flex-direction: row;
+  max-width: max-content;
+}
+.input-with-button > * {
+  margin-inline: 1px;
+}
