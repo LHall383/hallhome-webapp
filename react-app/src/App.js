@@ -1,38 +1,45 @@
-import "./App.scss";
+import './App.scss';
 
-import { Alignment, Navbar, Text, Icon } from "@blueprintjs/core";
-import "@blueprintjs/icons";
+import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  Alignment, Navbar, Text, Icon,
+} from '@blueprintjs/core';
+import '@blueprintjs/icons';
 
-import Home from "./pages/Home";
-import MusicAnalysis from "./pages/MusicAnalysis";
+import {
+  BrowserRouter as Router, Switch, Route, Link,
+} from 'react-router-dom';
+
+import Home from './pages/Home';
+import MusicAnalysis from './pages/MusicAnalysis';
 
 export default function App() {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <Router>
 
       <div className="App bp3-dark">
         <div className="App-header">
           <Navbar>
-              <Navbar.Group align={Alignment.LEFT}>
-                  <Navbar.Heading>The Hall Home</Navbar.Heading>
-                  <Navbar.Divider />
-                  <Link className="bp3-button bp3-minimal" to="/">
-                    <Icon icon="home"></Icon>
-                    <Text>Home</Text>
-                  </Link>
-              </Navbar.Group>
+            <Navbar.Group align={Alignment.LEFT}>
+              <Navbar.Heading>The Hall Home</Navbar.Heading>
+              <Navbar.Divider />
+              <Link className="bp3-button bp3-minimal" to="/">
+                <Icon icon="home" />
+                <Text>Home</Text>
+              </Link>
+            </Navbar.Group>
           </Navbar>
         </div>
 
         <div className="App-body">
           <Switch>
             <Route path="/music-analysis">
-              <MusicAnalysis/>
+              <MusicAnalysis />
             </Route>
             <Route path="/">
-              <Home/>
+              <Home />
             </Route>
           </Switch>
         </div>
@@ -46,4 +53,4 @@ export default function App() {
 
     </Router>
   );
-};
+}

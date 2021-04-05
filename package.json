@@ -19,5 +19,7 @@
   "bugs": {
     "url": "https://github.com/LHall383/hallhome-webapp/issues"
   },
-  "homepage": "https://github.com/LHall383/hallhome-webapp#readme"
+  "homepage": "https://github.com/LHall383/hallhome-webapp#readme",
+  "dependencies": {},
+  "devDependencies": {}
 }
