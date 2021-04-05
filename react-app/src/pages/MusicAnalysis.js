@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import './MusicAnalysis.scss';
 
 import React, { useState } from 'react';
@@ -43,7 +42,6 @@ export default function MusicAnalysis() {
   };
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <div>
       <div className="App-body-title">
         <H1>Spotify Music Analysis</H1>

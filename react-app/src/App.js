@@ -12,7 +12,6 @@ import MusicAnalysis from './pages/MusicAnalysis';
 
 export default function App() {
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <Router>
       <div className="App bp3-dark">
         <div className="App-header">

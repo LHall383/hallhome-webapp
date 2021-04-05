@@ -14,7 +14,6 @@ const cardTextStyle = { color: Colors.WHITE }; // {color: Colors.BLUE4};
 
 export default function Home() {
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <div>
       <div className="App-body-title">
         <H1>The Hall Home</H1>
