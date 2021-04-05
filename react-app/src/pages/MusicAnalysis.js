@@ -3,9 +3,7 @@ import './MusicAnalysis.scss';
 
 import React, { useState } from 'react';
 
-import {
-  Button, H1, InputGroup, Text,
-} from '@blueprintjs/core';
+import { Button, H1, InputGroup, Text } from '@blueprintjs/core';
 import '@blueprintjs/icons';
 
 import axios from 'axios';
@@ -29,9 +27,7 @@ export default function MusicAnalysis() {
     axios({
       method: 'get',
       url: '/user-public',
-      params: {
-        username,
-      },
+      params: { username },
       responseType: 'json',
     })
       .then((response) => {
@@ -54,20 +50,33 @@ export default function MusicAnalysis() {
       </div>
 
       <div className="input-with-button">
-        <InputGroup leftIcon="user" placeholder="Spotify Username" onChange={handleUsernameEdit} />
-        <Button icon="import" onClick={handleGetPublicUserData}>Get Public User Data</Button>
+        <InputGroup
+          leftIcon="user"
+          placeholder="Spotify Username"
+          onChange={handleUsernameEdit}
+        />
+        <Button icon="import" onClick={handleGetPublicUserData}>
+          Get Public User Data
+        </Button>
       </div>
 
       {userData && (
         <div>
-          {userData.images.length > 0 && <img src={userData.images[0].url} alt={`profile for${userData.display_name}`} height="250" />}
+          {userData.images.length > 0 && (
+            <img
+              src={userData.images[0].url}
+              alt={`profile for${userData.display_name}`}
+              height="250"
+            />
+          )}
           <Text>
             {`${userData.display_name} - ${userData.followers.total} follower(s)`}
           </Text>
-          <a href={userData.external_urls.spotify}>{userData.external_urls.spotify}</a>
+          <a href={userData.external_urls.spotify}>
+            {userData.external_urls.spotify}
+          </a>
         </div>
       )}
-
     </div>
   );
 }

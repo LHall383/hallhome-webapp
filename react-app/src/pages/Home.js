@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-  Card, Elevation, H1, H4, Colors,
-} from '@blueprintjs/core';
+import { Card, Elevation, H1, H4, Colors } from '@blueprintjs/core';
 import '@blueprintjs/icons';
 
 import { Link } from 'react-router-dom';
@@ -24,12 +22,16 @@ export default function Home() {
 
       <div className="card-container">
         <Link to="/">
-          <Card interactive="true" elevation={Elevation.TWO} onClick={linkNextcloud}>
+          <Card
+            interactive="true"
+            elevation={Elevation.TWO}
+            onClick={linkNextcloud}
+          >
             <H4 style={cardHeaderStyle}>Nextcloud File Storage</H4>
             <p style={cardTextStyle}>
-              Nextcloud is a file hosting interface for multiple users to view, store and share
-              files. To request access to Nextcloud send an email to lucashall383@gmail.com
-              asking for a Nextcloud account.
+              Nextcloud is a file hosting interface for multiple users to view,
+              store and share files. To request access to Nextcloud send an
+              email to lucashall383@gmail.com asking for a Nextcloud account.
             </p>
           </Card>
         </Link>
@@ -40,8 +42,8 @@ export default function Home() {
           <Card interactive="true" elevation={Elevation.TWO}>
             <H4 style={cardHeaderStyle}>Spotify Music Analysis</H4>
             <p style={cardTextStyle}>
-              This is an analysis tool that allows a user to log in and view their Spotify
-              listening statistics.
+              This is an analysis tool that allows a user to log in and view
+              their Spotify listening statistics.
             </p>
           </Card>
         </Link>

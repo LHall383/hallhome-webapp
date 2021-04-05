@@ -2,14 +2,10 @@ import './App.scss';
 
 import React from 'react';
 
-import {
-  Alignment, Navbar, Text, Icon,
-} from '@blueprintjs/core';
+import { Alignment, Navbar, Text, Icon } from '@blueprintjs/core';
 import '@blueprintjs/icons';
 
-import {
-  BrowserRouter as Router, Switch, Route, Link,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Home from './pages/Home';
 import MusicAnalysis from './pages/MusicAnalysis';
@@ -18,7 +14,6 @@ export default function App() {
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <Router>
-
       <div className="App bp3-dark">
         <div className="App-header">
           <Navbar>
@@ -50,7 +45,6 @@ export default function App() {
           </div>
         </footer>
       </div>
-
     </Router>
   );
 }
