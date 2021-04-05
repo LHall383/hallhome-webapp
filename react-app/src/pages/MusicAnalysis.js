@@ -1,11 +1,10 @@
 import './MusicAnalysis.scss';
-
-import React, { useState } from 'react';
-
+import React from 'react';
 import { Button, H1, InputGroup, Text } from '@blueprintjs/core';
 import '@blueprintjs/icons';
-
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser, setUsername } from '../redux/ducks/publicUser';
 
 if (process.env.NODE_ENV === 'production') {
   axios.defaults.baseURL = 'https://thehallho.me/api';
@@ -14,31 +13,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default function MusicAnalysis() {
-  const [username, setUsername] = useState('');
-  const [userData, setUserData] = useState(undefined);
+  const dispatch = useDispatch();
+
+  const userData = useSelector((state) => state.publicUser.user);
+  const username = useSelector((state) => state.publicUser.username);
 
   const handleUsernameEdit = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handleGetPublicUserData = () => {
-    // axios get to backend with param username set to spotifyUsername
-    axios({
-      method: 'get',
-      url: '/user-public',
-      params: { username },
-      responseType: 'json',
-    })
-      .then((response) => {
-        if (response.data) {
-          setUserData(response.data);
-        } else {
-          setUserData(undefined);
-        }
-      })
-      .catch(() => {
-        setUserData(undefined);
-      });
+    dispatch(setUsername(e.target.value));
   };
 
   return (
@@ -53,7 +34,7 @@ export default function MusicAnalysis() {
           placeholder="Spotify Username"
           onChange={handleUsernameEdit}
         />
-        <Button icon="import" onClick={handleGetPublicUserData}>
+        <Button icon="import" onClick={() => dispatch(getUser(username))}>
           Get Public User Data
         </Button>
       </div>
