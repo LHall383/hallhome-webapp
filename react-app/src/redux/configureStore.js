@@ -1,17 +1,23 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import {
+  configureStore,
+  combineReducers,
+  getDefaultMiddleware,
+} from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import pulicUserReducer from './ducks/publicUser';
 import { watcherSaga } from './sagas/rootSaga';
+
+import pulicUserReducer from './ducks/publicUser';
 
 const reducer = combineReducers({
   publicUser: pulicUserReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [sagaMiddleware];
 
-const store = createStore(reducer, {}, applyMiddleware(...middleware));
-
+const store = configureStore({
+  reducer,
+  middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware],
+});
 sagaMiddleware.run(watcherSaga);
 
 export default store;

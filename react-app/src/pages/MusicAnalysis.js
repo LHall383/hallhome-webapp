@@ -19,7 +19,7 @@ export default function MusicAnalysis() {
   const username = useSelector((state) => state.publicUser.username);
 
   const handleUsernameEdit = (e) => {
-    dispatch(setUsername(e.target.value));
+    dispatch(setUsername({ username: e.target.value }));
   };
 
   return (
@@ -34,7 +34,7 @@ export default function MusicAnalysis() {
           placeholder="Spotify Username"
           onChange={handleUsernameEdit}
         />
-        <Button icon="import" onClick={() => dispatch(getUser(username))}>
+        <Button icon="import" onClick={() => dispatch(getUser({ username }))}>
           Get Public User Data
         </Button>
       </div>

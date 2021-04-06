@@ -1,36 +1,22 @@
-const SET_USERNAME = 'setUsername';
-export const GET_USER = 'getUser';
-const SET_USER = 'setUser';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const setUsername = (username) => ({
-  type: SET_USERNAME,
-  username,
+const publicUserSlice = createSlice({
+  name: 'publicUser',
+  initialState: {
+    username: '',
+    userData: undefined,
+  },
+  reducers: {
+    setUsername(state, action) {
+      return { ...state, username: action.payload.username };
+    },
+    getUser() {},
+    setUser(state, action) {
+      return { ...state, user: action.payload };
+    },
+  },
 });
 
-export const getUser = (username) => ({
-  type: GET_USER,
-  username,
-});
+export const { setUsername, getUser, setUser } = publicUserSlice.actions;
 
-export const setUser = (user) => ({
-  type: SET_USER,
-  user,
-});
-
-const initialState = {
-  username: '',
-  userData: undefined,
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_USERNAME:
-      return { ...state, username: action.username };
-    case SET_USER:
-      return { ...state, user: action.user };
-    default:
-      return state;
-  }
-};
-
-export default reducer;
+export default publicUserSlice.reducer;

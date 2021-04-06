@@ -4,7 +4,7 @@ import { requestGetUser } from '../requests/publicUser';
 
 export function* handleGetUser(action) {
   try {
-    const response = yield call(requestGetUser, action.username);
+    const response = yield call(requestGetUser, action.payload.username);
     const { data } = response;
     yield put(setUser(data));
   } catch (error) {
