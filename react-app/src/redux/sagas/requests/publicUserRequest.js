@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axiosInstance from '../../../utils/customAxios';
 
 export function requestGetUser(username) {
-  return axios({
+  return axiosInstance({
     method: 'get',
     url: '/user-public',
     params: { username },
