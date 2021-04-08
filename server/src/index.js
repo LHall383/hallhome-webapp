@@ -8,13 +8,13 @@ require("dotenv").config();
 // Import our API functions
 const authorization = require("./authorization/authorization");
 const publicUser = require("./user-profiles-api/publicUser");
+const privateUser = require("./user-profiles-api/privateUser");
 
 // Get port from environment variables or fallback to 3001
 const PORT = process.env.PORT || 3001;
 
-// Set constants for our app
-const stateKey = "spotify_auth_state";
-const redirect_uri = `http://localhost:${PORT}/callback`;
+// Save tokens in the following object with the keys as the authorization code
+const userAuthTokens = {};
 
 // Create and configure our express app
 const app = express();
@@ -26,22 +26,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // Add cookie parser for login with authorization code
 app.use(cookieParser());
-
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
-var generateRandomString = function (length) {
-  var text = "";
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-};
 
 /**
  * Test endpoint to verify that server is up and running
@@ -76,65 +60,48 @@ app.get("/user-public", async (req, res) => {
 });
 
 /**
- * Redirect user to login page to authenticate through Spotify
+ * Get private user information using the token provided to this endpoint
+ * Params:
+ *    code - The code provided upon user authentication, used to map to the
+ *           actual auth token
  */
-app.get("/login", async (req, res) => {
-  console.log("Login endpoint");
+app.get("/user-private", async (req, res) => {
+  console.log("\n\nprivate user data for: " + req.query.code);
 
-  const state = generateRandomString(16);
-  res.cookie(stateKey, state);
+  if (userAuthTokens[req.query.code]) {
+    const authInfo = userAuthTokens[req.query.code];
+    console.log(authInfo);
 
-  url =
-    "https://accounts.spotify.com/authorize?" +
-    qs.stringify({
-      response_type: "code",
-      client_id: process.env.CLIENT_ID,
-      scope: "user-read-private user-read-email",
-      redirect_uri: redirect_uri,
-      state: state,
-    });
+    const userData = await privateUser.getUserPrivate(authInfo.access_token);
 
-  return res.status(200).json({
-    redirectUrl: url,
-    state: state,
-  });
+    res.status(200).json(userData);
+  } else {
+    res.json(undefined).status(400);
+  }
 });
 
 /**
- * Receive redirects from Spotify after user has authenticated
+ * Sumbit code provided by Spotify to create access_token and refresh_token
+ * Params:
+ *    code         - code provided by Spotify from user authentication
+ *    redirect_uri - the URI used for the redirect in the inital request
  */
-app.get("/callback", async (req, res) => {
-  const code = req.query.code || null;
-  const state = req.query.state || null;
-  const storedState = req.cookies ? req.cookies[stateKey] : null;
+app.get("/authCodeSubmit", async (req, res) => {
+  console.log("\n\nprivate user data for: " + req.query.code);
+  console.log(req.query.redirect_uri);
+  const authData = await authorization.getAuthorizationCode(
+    req.query.code,
+    req.query.redirect_uri
+  );
 
-  console.log(`State: ${state} - ${storedState}`);
+  console.log(authData);
 
-  // Check if the state is valid to authenticate callback request
-  if (state === null || state !== storedState) {
-    console.log("state mismatch");
-    res.redirect(
-      "http://localhost:3000/music-analysis?" +
-        qs.stringify({
-          loggedIn: false,
-        })
-    );
+  if (authData) {
+    userAuthTokens[req.query.code] = { ...authData, receive_time: new Date() };
+
+    res.status(200).json({});
   } else {
-    // State is valid, clear state cookie and grab auth token using code
-    res.clearCookie(stateKey);
-    const authData = await authorization.getAuthorizationCode(
-      code,
-      redirect_uri
-    );
-    res.redirect(
-      "http://localhost:3000/music-analysis?" +
-        qs.stringify({
-          loggedIn: true,
-          authData: authData,
-        })
-    );
-    // res.status(200).json(authData);
-    // .redirect("http://localhost:3000/music-analysis?loggedIn=true");
+    res.status(400).json({});
   }
 });
 
