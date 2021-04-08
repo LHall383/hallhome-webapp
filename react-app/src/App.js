@@ -1,14 +1,13 @@
 import './App.scss';
 
 import React from 'react';
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Alignment, Navbar, Text, Icon } from '@blueprintjs/core';
 import '@blueprintjs/icons';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
 import Home from './pages/Home';
-import MusicAnalysis from './pages/MusicAnalysis';
+import MusicAnalysis from './pages/music-analysis/MusicAnalysis';
+import UserDashboard from './pages/music-analysis/UserDashboard';
 
 export default function App() {
   return (
@@ -29,6 +28,12 @@ export default function App() {
 
         <div className="App-body">
           <Switch>
+            <Route path="/music-analysis/user-dashboard">
+              <UserDashboard />
+            </Route>
+            <Route path="/music-analysis/callback">
+              <MusicAnalysis />
+            </Route>
             <Route path="/music-analysis">
               <MusicAnalysis />
             </Route>
