@@ -1,13 +1,12 @@
-const axios = require("axios");
+const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
 
 module.exports.getUserPrivate = async (authCodeToken) => {
   try {
-    const response = await axios({
+    const response = await axiosInstance({
       method: "get",
-      url: "https://api.spotify.com/v1/me",
+      url: "/me",
       headers: {
         Authorization: "Bearer " + authCodeToken,
-        "content-type": "application/x-www-form-urlencoded",
       },
     });
 
