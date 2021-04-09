@@ -6,9 +6,9 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 // Import our API functions
-const authorization = require("./authorization/authorization");
-const publicUser = require("./user-profiles-api/publicUser");
-const privateUser = require("./user-profiles-api/privateUser");
+const authorization = require("./spotify-api/authorization/authorization");
+const publicUser = require("./spotify-api/user-profiles-api/publicUser");
+const privateUser = require("./spotify-api/user-profiles-api/privateUser");
 
 // Get port from environment variables or fallback to 3001
 const PORT = process.env.PORT || 3001;
