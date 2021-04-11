@@ -1,5 +1,5 @@
 import './SongTile.scss';
-import { Card, Elevation, H5 } from '@blueprintjs/core';
+import { Card, Elevation, Text } from '@blueprintjs/core';
 import React from 'react';
 
 export default function SongTile(props) {
@@ -15,12 +15,11 @@ export default function SongTile(props) {
       interactive={true}
       elevation={Elevation.TWO}
     >
-      <div
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.75)',
-        }}
-      >
-        <H5 style={{ alignSelf: 'flex-end' }}>{name}</H5>
+      <div></div>
+      <div className="name-banner">
+        <Text className="bp3-text-large" ellipsize={true}>
+          {name}
+        </Text>
       </div>
     </Card>
   );
