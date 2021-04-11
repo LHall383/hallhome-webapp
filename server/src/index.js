@@ -1,5 +1,4 @@
 const express = require("express");
-const axios = require("axios");
 const cors = require("cors");
 const qs = require("qs");
 const cookieParser = require("cookie-parser");
@@ -10,6 +9,7 @@ const publicUser = require("./spotify-api/user-profiles-api/publicUser");
 const authorization = require("./spotify-api/authorization/authorization");
 const privateUser = require("./spotify-api/user-profiles-api/privateUser");
 const topTracks = require("./spotify-api/personalization-api/topTracks");
+const getTracks = require("./spotify-api/tracks-api/getTracks");
 
 // Get port from environment variables or fallback to 3001
 const PORT = process.env.PORT || 3001;
@@ -109,7 +109,10 @@ app.get("/user-private", async (req, res) => {
 /**
  * Get users top tracks
  * Params:
- *
+ *    code - Code provided upon user authentication, used to map to token
+ *    time_range - Duration of listening history: "long_term", "medium_term", or "short_term"
+ *    limit - Number of tracks to pull: 1-50, default 20
+ *    offset - Offset from 0, used to get a complete history
  */
 app.get("/top-tracks", async (req, res) => {
   console.log("\n\ntop tracks for: " + req.query.code);
@@ -129,6 +132,23 @@ app.get("/top-tracks", async (req, res) => {
   } else {
     res.json(undefined).status(400);
   }
+});
+
+/**
+ * Get detailed track information based on track ID
+ * Params:
+ *     trackIds - list of ids to retreive data for
+ */
+app.get("/tracks", async (req, res) => {
+  console.log("\n\ntrack information for: " + req.query.trackIds);
+
+  const authData = await authorization.getClientCredentials();
+  const trackData = await getTracks.getTracks(
+    req.query.trackIds,
+    authData.access_token
+  );
+
+  res.json(trackData);
 });
 
 // Start the application

@@ -1,6 +1,7 @@
 import { H1, Text } from '@blueprintjs/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import '../../components/Components.scss';
 import SongTile from '../../components/music-analysis/SongTile';
 import { getTopTracks } from '../../redux/ducks/personalizationDuck';
 import { getUserProfile } from '../../redux/ducks/privateUserDuck';
@@ -44,7 +45,7 @@ export default function UserDashboard() {
         </div>
       )}
 
-      <div>
+      <div className="tile-container">
         {topTracks &&
           topTracks.items &&
           topTracks.items.map((item, i) => (
