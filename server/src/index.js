@@ -1,14 +1,15 @@
 const express = require("express");
-const axios = require("axios");
 const cors = require("cors");
 const qs = require("qs");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 // Import our API functions
-const authorization = require("./authorization/authorization");
-const publicUser = require("./user-profiles-api/publicUser");
-const privateUser = require("./user-profiles-api/privateUser");
+const publicUser = require("./spotify-api/user-profiles-api/publicUser");
+const authorization = require("./spotify-api/authorization/authorization");
+const privateUser = require("./spotify-api/user-profiles-api/privateUser");
+const topTracks = require("./spotify-api/personalization-api/topTracks");
+const getTracks = require("./spotify-api/tracks-api/getTracks");
 
 // Get port from environment variables or fallback to 3001
 const PORT = process.env.PORT || 3001;
@@ -60,27 +61,6 @@ app.get("/user-public", async (req, res) => {
 });
 
 /**
- * Get private user information using the token provided to this endpoint
- * Params:
- *    code - The code provided upon user authentication, used to map to the
- *           actual auth token
- */
-app.get("/user-private", async (req, res) => {
-  console.log("\n\nprivate user data for: " + req.query.code);
-
-  if (userAuthTokens[req.query.code]) {
-    const authInfo = userAuthTokens[req.query.code];
-    console.log(authInfo);
-
-    const userData = await privateUser.getUserPrivate(authInfo.access_token);
-
-    res.status(200).json(userData);
-  } else {
-    res.json(undefined).status(400);
-  }
-});
-
-/**
  * Sumbit code provided by Spotify to create access_token and refresh_token
  * Params:
  *    code         - code provided by Spotify from user authentication
@@ -103,6 +83,72 @@ app.get("/authCodeSubmit", async (req, res) => {
   } else {
     res.status(400).json({});
   }
+});
+
+/**
+ * Get private user information using the token provided to this endpoint
+ * Params:
+ *    code - The code provided upon user authentication, used to map to the
+ *           actual auth token
+ */
+app.get("/user-private", async (req, res) => {
+  console.log("\n\nprivate user data for: " + req.query.code);
+
+  if (userAuthTokens[req.query.code]) {
+    const authInfo = userAuthTokens[req.query.code];
+    console.log(authInfo);
+
+    const userData = await privateUser.getUserPrivate(authInfo.access_token);
+
+    res.status(200).json(userData);
+  } else {
+    res.json(undefined).status(400);
+  }
+});
+
+/**
+ * Get users top tracks
+ * Params:
+ *    code - Code provided upon user authentication, used to map to token
+ *    time_range - Duration of listening history: "long_term", "medium_term", or "short_term"
+ *    limit - Number of tracks to pull: 1-50, default 20
+ *    offset - Offset from 0, used to get a complete history
+ */
+app.get("/top-tracks", async (req, res) => {
+  console.log("\n\ntop tracks for: " + req.query.code);
+
+  if (userAuthTokens[req.query.code]) {
+    const authInfo = userAuthTokens[req.query.code];
+    console.log(authInfo);
+
+    const tracks = await topTracks.getUserTopTracks(
+      authInfo.access_token,
+      req.query.time_range,
+      req.query.limit,
+      req.query.offset
+    );
+
+    res.status(200).json(tracks);
+  } else {
+    res.json(undefined).status(400);
+  }
+});
+
+/**
+ * Get detailed track information based on track ID
+ * Params:
+ *     trackIds - list of ids to retreive data for
+ */
+app.get("/tracks", async (req, res) => {
+  console.log("\n\ntrack information for: " + req.query.trackIds);
+
+  const authData = await authorization.getClientCredentials();
+  const trackData = await getTracks.getTracks(
+    req.query.trackIds,
+    authData.access_token
+  );
+
+  res.json(trackData);
 });
 
 // Start the application

@@ -1,18 +1,16 @@
-const axios = require("axios");
+const axiosInstance = require("../../utils/customAxios")
+  .axiosSpotifyAuthorization;
 const qs = require("qs");
 require("dotenv").config();
 
 module.exports.getClientCredentials = async () => {
   try {
-    const response = await axios({
+    const response = await axiosInstance({
       method: "post",
-      url: "https://accounts.spotify.com/api/token",
+      url: "/token",
       data: qs.stringify({
         grant_type: "client_credentials",
       }),
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-      },
       auth: {
         username: process.env.CLIENT_ID,
         password: process.env.CLIENT_SECRET,
@@ -28,17 +26,14 @@ module.exports.getClientCredentials = async () => {
 
 module.exports.getAuthorizationCode = async (code, redirect_uri) => {
   try {
-    const response = await axios({
+    const response = await axiosInstance({
       method: "post",
-      url: "https://accounts.spotify.com/api/token",
+      url: "/token",
       data: qs.stringify({
         code: code,
         redirect_uri: redirect_uri,
         grant_type: "authorization_code",
       }),
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-      },
       auth: {
         username: process.env.CLIENT_ID,
         password: process.env.CLIENT_SECRET,

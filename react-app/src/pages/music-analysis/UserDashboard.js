@@ -1,15 +1,24 @@
 import { H1, Text } from '@blueprintjs/core';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import '../../components/Components.scss';
+import SongTile from '../../components/music-analysis/SongTile';
+import { getTopTracks } from '../../redux/ducks/personalizationDuck';
 import { getUserProfile } from '../../redux/ducks/privateUserDuck';
 
 export default function UserDashboard() {
   const { code, userData: profile } = useSelector((state) => state.privateUser);
+  const { topTracks } = useSelector((state) => state.personalization);
   const dispatch = useDispatch();
 
   // When the component loads, try to get user profile, this will fail if we aren't logged in
   useEffect(() => {
-    dispatch(getUserProfile({ code: code }));
+    dispatch(getUserProfile({ code }));
+  }, [code, dispatch]);
+  useEffect(() => {
+    dispatch(
+      getTopTracks({ code, time_range: 'medium_term', limit: 50, offset: 0 }),
+    );
   }, [code, dispatch]);
 
   return (
@@ -35,6 +44,18 @@ export default function UserDashboard() {
           <a href={profile.href}>Profile Link: {profile.href}</a>
         </div>
       )}
+
+      <div className="tile-container">
+        {topTracks &&
+          topTracks.items &&
+          topTracks.items.map((item, i) => (
+            <SongTile
+              key={i.toString()}
+              songData={item}
+              index={i + 1}
+            ></SongTile>
+          ))}
+      </div>
     </div>
   );
 }
