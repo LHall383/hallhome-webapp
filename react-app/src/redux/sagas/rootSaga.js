@@ -6,9 +6,12 @@ import {
   handleGetUserProfile,
   handleRequestAccessToken,
 } from './handlers/privateUserHandler';
+import { getTopTracks } from '../ducks/personalizationDuck';
+import { handleGetTopTracks } from './handlers/personalizationHandler';
 
 export function* watcherSaga() {
   yield takeLatest(getUser.type, handleGetUser);
   yield takeLatest(requestAccessToken.type, handleRequestAccessToken);
   yield takeLatest(getUserProfile.type, handleGetUserProfile);
+  yield takeLatest(getTopTracks.type, handleGetTopTracks);
 }

@@ -22,7 +22,7 @@ const generateAuthUrl = () => {
     QueryString.stringify({
       response_type: 'code',
       client_id: process.env.REACT_APP_CLIENT_ID,
-      scope: 'user-read-private user-read-email',
+      scope: 'user-read-private user-read-email user-top-read',
       redirect_uri: redirect_uri,
       state: stateString,
     });
