@@ -3,7 +3,6 @@ import {
   ControlGroup,
   FormGroup,
   H1,
-  Intent,
   MenuItem,
   Text,
 } from '@blueprintjs/core';
@@ -30,10 +29,12 @@ export default function UserDashboard() {
   // Component state
   const [currentTimeRange, setCurrentTimeRange] = useState(timeRanges[0]);
 
-  // When the component loads, try to get user profile, this will fail if we aren't logged in
+  // Get user profile data using code
   useEffect(() => {
     dispatch(getUserProfile({ code }));
   }, [code, dispatch]);
+
+  // Get user's top tracks
   useEffect(() => {
     dispatch(
       getTopTracks({
@@ -56,7 +57,6 @@ export default function UserDashboard() {
       ></MenuItem>
     );
   };
-  // let currentActiveTimeRange = timeRanges[0];
   const handleTimeRangeSelect = (timeRange) => {
     setCurrentTimeRange(timeRange);
   };
@@ -113,10 +113,6 @@ export default function UserDashboard() {
           </Select>
         </FormGroup>
       </ControlGroup>
-
-      {/* <H4>
-        {currentTimeRange.text}: {currentTimeRange.data}
-      </H4> */}
 
       <div className="tile-container">
         {topTracks &&
