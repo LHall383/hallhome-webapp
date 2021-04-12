@@ -11,6 +11,7 @@ export default function SongTile(props) {
       style={{
         backgroundImage: `url(${album.images[0].url})`,
         backgroundSize: 'cover',
+        padding: '0px',
       }}
       interactive={true}
       elevation={Elevation.TWO}
