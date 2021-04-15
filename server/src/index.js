@@ -67,7 +67,7 @@ app.get("/user-public", async (req, res) => {
  *    redirect_uri - the URI used for the redirect in the inital request
  */
 app.get("/authCodeSubmit", async (req, res) => {
-  console.log("\n\nprivate user data for: " + req.query.code);
+  console.log("\n\nSubmit auth code for token, code: " + req.query.code);
   console.log(req.query.redirect_uri);
   const authData = await authorization.getAuthorizationCode(
     req.query.code,
@@ -82,6 +82,24 @@ app.get("/authCodeSubmit", async (req, res) => {
     res.status(200).json({});
   } else {
     res.status(400).json({});
+  }
+});
+
+/**
+ * Check if the code maps to valid auth token
+ * Params:
+ *    code - code provided by Spotify from user authentication
+ */
+app.get("/auth/isCodeValid", async (req, res) => {
+  console.log("\n\nCheck if code has valid token: " + req.query.code);
+
+  if (userAuthTokens[req.query.code]) {
+    const authInfo = userAuthTokens[req.query.code];
+    console.log(authInfo);
+
+    res.status(200).json({ valid: true });
+  } else {
+    res.status(200).json({ valid: false });
   }
 });
 
@@ -102,7 +120,7 @@ app.get("/user-private", async (req, res) => {
 
     res.status(200).json(userData);
   } else {
-    res.json(undefined).status(400);
+    res.status(400).json(undefined);
   }
 });
 

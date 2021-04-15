@@ -25,7 +25,8 @@ const timeRanges = [
 
 export default function UserDashboard() {
   // Redux data
-  const { code, userData: profile } = useSelector((state) => state.privateUser);
+  const { code } = useSelector((state) => state.authorization);
+  const { userData: profile } = useSelector((state) => state.privateUser);
   const { topTracks } = useSelector((state) => state.personalization);
   const dispatch = useDispatch();
 

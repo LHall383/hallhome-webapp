@@ -9,8 +9,10 @@ import { watcherSaga } from './sagas/rootSaga';
 import pulicUserReducer from './ducks/publicUserDuck';
 import privateUserReducer from './ducks/privateUserDuck';
 import personalizationReducer from './ducks/personalizationDuck';
+import authorizationReducer from './ducks/authorizationDuck';
 
 const reducer = combineReducers({
+  authorization: authorizationReducer,
   publicUser: pulicUserReducer,
   privateUser: privateUserReducer,
   personalization: personalizationReducer,

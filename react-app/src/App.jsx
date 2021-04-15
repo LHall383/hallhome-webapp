@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Alignment, Icon, Navbar, Text } from '@blueprintjs/core';
 
+import LoginHandler from './components/LoginHandler.jsx';
 import Home from './pages/Home.jsx';
 import MusicAnalysis from './pages/music-analysis/MusicAnalysis.jsx';
 import UserDashboard from './pages/music-analysis/UserDashboard.jsx';
@@ -25,6 +26,10 @@ export default function App() {
               <Icon icon="music" />
               <Text>Music Analysis</Text>
             </Link>
+          </Navbar.Group>
+
+          <Navbar.Group align={Alignment.RIGHT}>
+            <LoginHandler></LoginHandler>
           </Navbar.Group>
         </Navbar>
 
