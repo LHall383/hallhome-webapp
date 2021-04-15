@@ -1,6 +1,22 @@
+@import '~@blueprintjs/core/lib/scss/variables';
+
+.tile-wrapper {
+  margin: 7px;
+  width: 200px;
+  height: 200px;
+}
+
 .tile-element {
   width: 200px;
   height: 200px;
-  margin: 7px;
-  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name-banner {
+  background-color: rgba($dark-gray1, 0.9);
+  height: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

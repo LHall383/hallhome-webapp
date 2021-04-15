@@ -1,6 +1,7 @@
+import '../Pages.scss';
 import './MusicAnalysis.scss';
 import React, { useEffect, useState } from 'react';
-import { Button, H1, InputGroup, Text } from '@blueprintjs/core';
+import { Button, ControlGroup, H1, InputGroup, Text } from '@blueprintjs/core';
 import '@blueprintjs/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useLocation } from 'react-router';
@@ -74,7 +75,7 @@ export default function MusicAnalysis() {
   };
 
   return (
-    <div>
+    <div className="page-wrapper">
       <div className="App-body-title">
         <H1>Spotify Music Analysis</H1>
       </div>
@@ -101,7 +102,7 @@ export default function MusicAnalysis() {
       </Switch>
 
       {/* Get public user information from Spotify users API */}
-      <div className="input-with-button">
+      <ControlGroup className="input-with-button">
         <InputGroup
           leftIcon="user"
           placeholder="Spotify Username"
@@ -110,7 +111,7 @@ export default function MusicAnalysis() {
         <Button icon="import" onClick={handlePublicGetUser}>
           Get Public User Data
         </Button>
-      </div>
+      </ControlGroup>
 
       {/* Display public user informaiton */}
       {user && (
