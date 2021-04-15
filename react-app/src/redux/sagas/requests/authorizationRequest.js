@@ -5,7 +5,6 @@ export function requestAccessToken(code, redirect_uri) {
     method: 'get',
     url: '/authCodeSubmit',
     params: { code, redirect_uri },
-    responseType: 'json',
   });
 }
 
@@ -14,6 +13,5 @@ export function checkAuthCode(code) {
     method: 'get',
     url: '/auth/isCodeValid',
     params: { code },
-    responseType: 'json',
   });
 }

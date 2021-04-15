@@ -5,6 +5,5 @@ export function requestGetUserProfile(code) {
     method: 'get',
     url: '/user-private',
     params: { code },
-    responseType: 'json',
   });
 }

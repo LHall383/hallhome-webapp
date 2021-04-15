@@ -5,6 +5,5 @@ export function requestGetUser(username) {
     method: 'get',
     url: '/user-public',
     params: { username },
-    responseType: 'json',
   });
 }

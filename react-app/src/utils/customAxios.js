@@ -5,6 +5,7 @@ const axiosInstance = axios.create({
     process.env.NODE_ENV === 'production'
       ? 'https://thehallho.me/api'
       : 'http://localhost:3001/',
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
 });
 
 export default axiosInstance;

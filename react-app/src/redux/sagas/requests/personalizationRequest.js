@@ -5,6 +5,5 @@ export function requestGetTopTracks(code, time_range, limit, offset) {
     method: 'get',
     url: '/top-tracks',
     params: { code, time_range, limit, offset },
-    responseType: 'json',
   });
 }
