@@ -12,7 +12,7 @@ import { Select } from '@blueprintjs/select';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../components/Components.scss';
-import SongTile from '../../components/music-analysis/SongTile';
+import SongTile from '../../components/music-analysis/SongTile.jsx';
 import { getTopTracks } from '../../redux/ducks/personalizationDuck';
 import { getUserProfile } from '../../redux/ducks/privateUserDuck';
 

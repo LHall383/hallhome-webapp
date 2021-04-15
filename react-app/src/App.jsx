@@ -4,9 +4,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Alignment, Icon, Navbar, Text } from '@blueprintjs/core';
 
-import Home from './pages/Home';
-import MusicAnalysis from './pages/music-analysis/MusicAnalysis';
-import UserDashboard from './pages/music-analysis/UserDashboard';
+import Home from './pages/Home.jsx';
+import MusicAnalysis from './pages/music-analysis/MusicAnalysis.jsx';
+import UserDashboard from './pages/music-analysis/UserDashboard.jsx';
 
 export default function App() {
   return (
