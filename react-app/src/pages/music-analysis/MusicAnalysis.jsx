@@ -1,11 +1,12 @@
 import '../Pages.scss';
 import './MusicAnalysis.scss';
+
 import React, { useEffect, useState } from 'react';
-import { Button, ControlGroup, H1, InputGroup, Text } from '@blueprintjs/core';
-import '@blueprintjs/icons';
+import QueryString from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useLocation } from 'react-router';
-import QueryString from 'qs';
+import { Button, ControlGroup, H1, InputGroup, Text } from '@blueprintjs/core';
+
 import { getUser, setUsername } from '../../redux/ducks/publicUserDuck';
 import { generateRandomString } from '../../utils/utils';
 import { requestAccessToken } from '../../redux/ducks/privateUserDuck';
