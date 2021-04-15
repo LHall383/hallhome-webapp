@@ -1,3 +1,5 @@
+import '../Pages.scss';
+
 import {
   Button,
   ControlGroup,

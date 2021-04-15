@@ -1,8 +1,10 @@
+import './Pages.scss';
+
 import React from 'react';
 
+import { useHistory } from 'react-router';
 import { Card, Elevation, H1, H4, Text } from '@blueprintjs/core';
 import '@blueprintjs/icons';
-import { useHistory } from 'react-router';
 
 const linkNextcloud = function linkNextcloud() {
   window.location.replace('http://cloud.thehallho.me');
