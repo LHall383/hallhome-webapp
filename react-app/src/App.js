@@ -2,8 +2,7 @@ import './App.scss';
 
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Alignment, Navbar, Text, Icon } from '@blueprintjs/core';
-import '@blueprintjs/icons';
+import { Alignment, Icon, Navbar, Text } from '@blueprintjs/core';
 
 import Home from './pages/Home';
 import MusicAnalysis from './pages/music-analysis/MusicAnalysis';
@@ -13,26 +12,27 @@ export default function App() {
   return (
     <Router>
       <div className="App bp3-dark">
-        <div className="App-header">
-          <Navbar>
-            <Navbar.Group align={Alignment.LEFT}>
-              <Navbar.Heading>The Hall Home</Navbar.Heading>
-              <Navbar.Divider />
-              <Link className="bp3-button bp3-minimal" to="/">
-                <Icon icon="home" />
-                <Text>Home</Text>
-              </Link>
-            </Navbar.Group>
-          </Navbar>
-        </div>
+        {/* Application navigation bar */}
+        <Navbar>
+          <Navbar.Group align={Alignment.LEFT}>
+            <Navbar.Heading>The Hall Home</Navbar.Heading>
+            <Navbar.Divider />
+            <Link className="bp3-button bp3-minimal" to="/">
+              <Icon icon="home" />
+              <Text>Home</Text>
+            </Link>
+            <Link className="bp3-button bp3-minimal" to="/music-analysis">
+              <Icon icon="music" />
+              <Text>Music Analysis</Text>
+            </Link>
+          </Navbar.Group>
+        </Navbar>
 
+        {/* Application body, rendered differently depending on our route */}
         <div className="App-body">
           <Switch>
             <Route path="/music-analysis/user-dashboard">
               <UserDashboard />
-            </Route>
-            <Route path="/music-analysis/callback">
-              <MusicAnalysis />
             </Route>
             <Route path="/music-analysis">
               <MusicAnalysis />
@@ -42,12 +42,6 @@ export default function App() {
             </Route>
           </Switch>
         </div>
-
-        <footer className="App-footer">
-          <div className="App-footer-text">
-            {/* Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> */}
-          </div>
-        </footer>
       </div>
     </Router>
   );
