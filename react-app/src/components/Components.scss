@@ -6,3 +6,16 @@
   max-width: 80%;
   align-items: stretch;
 }
+
+.logged-in-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logged-in-picture {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.logged-in-text-wrapper {
+  margin: 10px;
+}

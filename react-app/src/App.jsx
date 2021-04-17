@@ -27,20 +27,25 @@ export default function App() {
               <Text>Music Analysis</Text>
             </Link>
           </Navbar.Group>
-
-          <Navbar.Group align={Alignment.RIGHT}>
-            <LoginHandler></LoginHandler>
-          </Navbar.Group>
         </Navbar>
 
         {/* Application body, rendered differently depending on our route */}
         <div className="App-body">
           <Switch>
-            <Route path="/music-analysis/user-dashboard">
-              <UserDashboard />
-            </Route>
             <Route path="/music-analysis">
-              <MusicAnalysis />
+              <div className="login-button-container">
+                <div className="login-button-wrapper">
+                  <LoginHandler></LoginHandler>
+                </div>
+              </div>
+              <Switch>
+                <Route path="/music-analysis/user-dashboard">
+                  <UserDashboard />
+                </Route>
+                <Route path="/music-analysis">
+                  <MusicAnalysis />
+                </Route>
+              </Switch>
             </Route>
             <Route path="/">
               <Home />

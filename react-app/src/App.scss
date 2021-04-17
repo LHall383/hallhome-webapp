@@ -10,6 +10,16 @@
   margin: 20px;
 }
 
+// spotify login button styling
+.login-button-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.login-button-wrapper {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
 // style scrollbar
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

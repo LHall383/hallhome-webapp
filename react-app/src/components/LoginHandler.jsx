@@ -13,10 +13,11 @@ import {
 } from '../redux/ducks/authorizationDuck';
 
 export default function MusicAnalysis() {
+  const dispatch = useDispatch();
+  const { userData } = useSelector((state) => state.privateUser);
   const { code, loggedIn, redirectUri } = useSelector(
     (state) => state.authorization,
   );
-  const dispatch = useDispatch();
 
   // React component state
   const [sentRequest, setSentRequest] = useState(false);
@@ -27,7 +28,7 @@ export default function MusicAnalysis() {
   // Update the auth data if we have any query params
   useEffect(() => {
     const authData = QueryString.parse(location.search.slice(1));
-    if (!sentRequest && authData && authData.code) {
+    if (!loggedIn && !sentRequest && authData && authData.code) {
       dispatch(
         requestAccessToken({
           code: authData.code,
@@ -36,7 +37,17 @@ export default function MusicAnalysis() {
       );
       setSentRequest(true);
     }
-  }, [location.search, dispatch, sentRequest, setSentRequest, redirectUri]);
+    if (loggedIn) {
+      setSentRequest(false);
+    }
+  }, [
+    location.search,
+    dispatch,
+    setSentRequest,
+    sentRequest,
+    redirectUri,
+    loggedIn,
+  ]);
   // Check login status anytime our 'code' changes
   useEffect(() => {
     dispatch(checkAuthCode({ code }));
@@ -64,9 +75,24 @@ export default function MusicAnalysis() {
 
   if (loggedIn) {
     return (
-      <div>
-        <Text>Logged In</Text>
-      </div>
+      <Button style={{ padding: '0px' }}>
+        <div className="logged-in-wrapper">
+          {userData && userData.images && userData.images.length > 0 && (
+            <img
+              src={userData.images[0].url}
+              alt={`${userData.display_name} profile`}
+              height="50"
+              className="logged-in-picture"
+            />
+          )}
+          <div className="logged-in-text-wrapper">
+            <Text>
+              {userData && userData.display_name}
+              {!userData && 'Logged In'}
+            </Text>
+          </div>
+        </div>
+      </Button>
     );
   } else {
     return (

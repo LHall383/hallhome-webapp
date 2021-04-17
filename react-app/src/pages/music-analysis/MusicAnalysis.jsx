@@ -35,7 +35,7 @@ export default function MusicAnalysis() {
           <img
             alt="Spotify logo"
             src="Spotify_Logo_RGB_Green.png"
-            style={{ width: '140px' }}
+            width="140px"
           ></img>
         </div>
       </div>
