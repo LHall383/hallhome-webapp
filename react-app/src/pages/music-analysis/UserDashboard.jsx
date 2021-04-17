@@ -1,3 +1,6 @@
+import '../Pages.scss';
+import '../../components/Components.scss';
+
 import {
   Button,
   ControlGroup,
@@ -9,8 +12,8 @@ import {
 import { Select } from '@blueprintjs/select';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import '../../components/Components.scss';
-import SongTile from '../../components/music-analysis/SongTile';
+
+import SongTile from '../../components/music-analysis/SongTile.jsx';
 import { getTopTracks } from '../../redux/ducks/personalizationDuck';
 import { getUserProfile } from '../../redux/ducks/privateUserDuck';
 
@@ -22,7 +25,8 @@ const timeRanges = [
 
 export default function UserDashboard() {
   // Redux data
-  const { code, userData: profile } = useSelector((state) => state.privateUser);
+  const { code } = useSelector((state) => state.authorization);
+  const { userData: profile } = useSelector((state) => state.privateUser);
   const { topTracks } = useSelector((state) => state.personalization);
   const dispatch = useDispatch();
 

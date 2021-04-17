@@ -1,7 +1,8 @@
 import './SongTile.scss';
+
+import React from 'react';
 import { Card, Elevation, Text } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
-import React from 'react';
 
 export default function SongTile(props) {
   const { name, album } = props.songData;
