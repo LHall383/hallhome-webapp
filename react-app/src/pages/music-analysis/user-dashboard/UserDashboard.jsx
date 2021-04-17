@@ -1,5 +1,5 @@
-import '../Pages.scss';
-import '../../components/Components.scss';
+import '../../Pages.scss';
+import '../../../components/Components.scss';
 
 import {
   Button,
@@ -13,9 +13,9 @@ import { Select } from '@blueprintjs/select';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import SongTile from '../../components/music-analysis/SongTile.jsx';
-import { getTopTracks } from '../../redux/ducks/personalizationDuck';
-import { getUserProfile } from '../../redux/ducks/privateUserDuck';
+import SongTile from '../../../components/music-analysis/SongTile.jsx';
+import { getTopTracks } from '../../../redux/ducks/personalizationDuck';
+import { getUserProfile } from '../../../redux/ducks/privateUserDuck';
 
 const timeRanges = [
   { data: 'short_term', text: 'Short Term' },
