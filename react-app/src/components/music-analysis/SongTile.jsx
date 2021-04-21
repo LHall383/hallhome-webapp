@@ -1,42 +1,32 @@
-import './SongTile.scss';
-
 import React from 'react';
-import { Card, Elevation, Text } from '@blueprintjs/core';
-import { Popover2 } from '@blueprintjs/popover2';
+
+import Tile from './Tile';
 
 export default function SongTile(props) {
-  const { name, album } = props.songData;
+  const { name, album, artists, duration_ms, uri } = props.songData;
 
+  // do some data preprocessing here for popover text
+  const min = Math.floor(duration_ms / 1000 / 60);
+  const sec = Math.floor(((duration_ms / 1000 / 60) % 1) * 60);
+  const artistsLabel = 'Artist' + (artists.length > 1 ? 's' : '') + ':';
+  const artistsString = artists
+    .map((e) => e.name)
+    .reduce((acc, current) => acc + ', ' + current);
+  const popoverLines = [
+    { label: 'Album:', value: album.name },
+    { label: artistsLabel, value: artistsString },
+    { label: 'Duration:', value: min + ':' + ('00' + sec).slice(-2) },
+  ];
+
+  const imageUrl = album.images[0].url;
+
+  // ({ popoverLines, imageUrl, labelText, uri })
   return (
-    <div className="tile-wrapper">
-      <Popover2
-        placement="bottom"
-        fill={true}
-        minimal={false}
-        content={
-          <div style={{ padding: '7px' }}>
-            <Text className="bp3-text-large">{album.name}</Text>
-          </div>
-        }
-      >
-        <Card
-          className="tile-element"
-          style={{
-            backgroundImage: `url(${album.images[0].url})`,
-            backgroundSize: 'cover',
-            padding: '0px',
-          }}
-          interactive={true}
-          elevation={Elevation.TWO}
-        >
-          <div></div>
-          <div className="name-banner">
-            <Text className="bp3-text-large" ellipsize={true}>
-              {name}
-            </Text>
-          </div>
-        </Card>
-      </Popover2>
-    </div>
+    <Tile
+      popoverLines={popoverLines}
+      imageUrl={imageUrl}
+      labelText={name}
+      uri={uri}
+    />
   );
 }

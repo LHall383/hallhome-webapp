@@ -7,7 +7,7 @@ import { Alignment, Icon, Navbar, Text } from '@blueprintjs/core';
 import LoginHandler from './components/LoginHandler.jsx';
 import Home from './pages/Home.jsx';
 import MusicAnalysis from './pages/music-analysis/MusicAnalysis.jsx';
-import UserDashboard from './pages/music-analysis/UserDashboard.jsx';
+import UserDashboard from './pages/music-analysis/user-dashboard/UserDashboard.jsx';
 
 export default function App() {
   return (

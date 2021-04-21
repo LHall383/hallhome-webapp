@@ -8,7 +8,7 @@ require("dotenv").config();
 const publicUser = require("./spotify-api/user-profiles-api/publicUser");
 const authorization = require("./spotify-api/authorization/authorization");
 const privateUser = require("./spotify-api/user-profiles-api/privateUser");
-const topTracks = require("./spotify-api/personalization-api/topTracks");
+const top = require("./spotify-api/personalization-api/top");
 const getTracks = require("./spotify-api/tracks-api/getTracks");
 
 // Get port from environment variables or fallback to 3001
@@ -139,7 +139,7 @@ app.get("/top-tracks", async (req, res) => {
     const authInfo = userAuthTokens[req.query.code];
     console.log(authInfo);
 
-    const tracks = await topTracks.getUserTopTracks(
+    const tracks = await top.getUserTopTracks(
       authInfo.access_token,
       req.query.time_range,
       req.query.limit,
@@ -147,6 +147,34 @@ app.get("/top-tracks", async (req, res) => {
     );
 
     res.status(200).json(tracks);
+  } else {
+    res.json(undefined).status(400);
+  }
+});
+
+/**
+ * Get users top tracks
+ * Params:
+ *    code - Code provided upon user authentication, used to map to token
+ *    time_range - Duration of listening history: "long_term", "medium_term", or "short_term"
+ *    limit - Number of artists to pull: 1-50, default 20
+ *    offset - Offset from 0, used to get a complete history
+ */
+app.get("/top-artists", async (req, res) => {
+  console.log("\n\ntop artists for: " + req.query.code);
+
+  if (userAuthTokens[req.query.code]) {
+    const authInfo = userAuthTokens[req.query.code];
+    console.log(authInfo);
+
+    const artists = await top.getUserTopArtists(
+      authInfo.access_token,
+      req.query.time_range,
+      req.query.limit,
+      req.query.offset
+    );
+
+    res.status(200).json(artists);
   } else {
     res.json(undefined).status(400);
   }

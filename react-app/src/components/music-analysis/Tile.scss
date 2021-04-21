@@ -3,15 +3,19 @@
 .tile-wrapper {
   margin: 7px;
   width: 200px;
-  height: 200px;
+  height: 224px;
 }
 
 .tile-element {
-  width: 200px;
-  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  padding: 0px;
+  border-radius: 0px;
+  border: 0px;
 }
 
 .name-banner {
@@ -19,4 +23,14 @@
   height: 24px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.popover-line {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+.popover-label {
+  margin-right: 5px;
 }
