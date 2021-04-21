@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import QueryString from 'qs';
-import { Button, Text } from '@blueprintjs/core';
+import { Button, Menu, MenuDivider, MenuItem, Text } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/popover2';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useLocation } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import { generateRandomString } from '../utils/utils';
 import {
   checkAuthCode,
   setAuthInfo,
   requestAccessToken,
+  setLoggedIn,
 } from '../redux/ducks/authorizationDuck';
 
 export default function MusicAnalysis() {
@@ -24,6 +27,7 @@ export default function MusicAnalysis() {
 
   // Use the location from react-router to read tokens off callback URL
   const location = useLocation();
+  const history = useHistory();
 
   // Update the auth data if we have any query params
   useEffect(() => {
@@ -73,26 +77,60 @@ export default function MusicAnalysis() {
     window.location.href = authUrl;
   };
 
+  const handleLogout = () => {
+    dispatch(setLoggedIn(false));
+  };
+
+  const handleNav = (navToTab) => {
+    history.replace('/music-analysis/user-dashboard', {
+      selectedTab: navToTab,
+    });
+  };
+
   if (loggedIn) {
     return (
-      <Button style={{ padding: '0px' }}>
-        <div className="logged-in-wrapper">
-          {userData && userData.images && userData.images.length > 0 && (
-            <img
-              src={userData.images[0].url}
-              alt={`${userData.display_name} profile`}
-              height="50"
-              className="logged-in-picture"
+      <Popover2
+        placement="bottom"
+        fill={true}
+        minimal={true}
+        usePortal={false}
+        content={
+          <Menu>
+            <MenuDivider title="Dashboard" />
+            <MenuItem
+              icon="music"
+              text="Top Songs"
+              onClick={() => handleNav('top-tracks')}
             />
-          )}
-          <div className="logged-in-text-wrapper">
-            <Text>
-              {userData && userData.display_name}
-              {!userData && 'Logged In'}
-            </Text>
+            <MenuItem
+              icon="person"
+              text="Top Artists"
+              onClick={() => handleNav('top-artists')}
+            />
+            <MenuDivider title="Account" />
+            <MenuItem icon="log-out" text="Logout" onClick={handleLogout} />
+          </Menu>
+        }
+      >
+        <Button style={{ padding: '0px' }}>
+          <div className="logged-in-wrapper">
+            {userData && userData.images && userData.images.length > 0 && (
+              <img
+                src={userData.images[0].url}
+                alt={`${userData.display_name} profile`}
+                height="50"
+                className="logged-in-picture"
+              />
+            )}
+            <div className="logged-in-text-wrapper">
+              <Text>
+                {userData && userData.display_name}
+                {!userData && 'Logged In'}
+              </Text>
+            </div>
           </div>
-        </div>
-      </Button>
+        </Button>
+      </Popover2>
     );
   } else {
     return (

@@ -61,6 +61,7 @@ export default function TopTracks() {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'center',
+          marginBottom: '10px',
         }}
       >
         <div style={{ marginRight: '20px' }}>

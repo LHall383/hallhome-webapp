@@ -36,6 +36,7 @@ export default function SongTile(props) {
               padding: '7px',
               display: 'flex',
               flexDirection: 'column',
+              minWidth: '200px',
             }}
           >
             {popoverLines.map((line, i) => {
