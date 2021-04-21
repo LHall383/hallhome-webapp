@@ -19,3 +19,8 @@
 .logged-in-text-wrapper {
   margin: 10px;
 }
+
+// Workaround to allow tooltips in menus to function properly
+.bp3-menu .bp3-popover2-target {
+  display: block;
+}

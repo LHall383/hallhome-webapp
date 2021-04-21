@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import QueryString from 'qs';
-import { Button, Menu, MenuDivider, MenuItem, Text } from '@blueprintjs/core';
+import {
+  Button,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  Position,
+  Text,
+} from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch, useLocation } from 'react-router';
@@ -90,7 +97,7 @@ export default function MusicAnalysis() {
   if (loggedIn) {
     return (
       <Popover2
-        placement="bottom"
+        placement={Position.BOTTOM}
         fill={true}
         minimal={true}
         usePortal={false}
