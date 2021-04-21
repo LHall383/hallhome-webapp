@@ -11,6 +11,12 @@ import { getUserProfile } from '../../../redux/ducks/privateUserDuck';
 import TopTracks from './TopTracks';
 import TopArtists from './TopArtists';
 
+const timeRanges = [
+  { data: 'short_term', text: 'Short Term' },
+  { data: 'medium_term', text: 'Medium Term' },
+  { data: 'long_term', text: 'Long Term' },
+];
+
 export default function UserDashboard() {
   // Redux data
   const dispatch = useDispatch();
@@ -52,13 +58,13 @@ export default function UserDashboard() {
             id="top-tracks"
             title="Top Tracks"
             className="dashboard-tab"
-            panel={<TopTracks />}
+            panel={<TopTracks timeRanges={timeRanges} />}
           ></Tab>
           <Tab
             id="top-artists"
             title="Top Artists"
             className="dashboard-tab"
-            panel={<TopArtists />}
+            panel={<TopArtists timeRanges={timeRanges} />}
           ></Tab>
         </Tabs>
       </div>

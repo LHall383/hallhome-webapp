@@ -8,8 +8,11 @@ import { getUser } from '../ducks/publicUserDuck';
 import { handleGetUser } from './handlers/publicUserHandler';
 import { getUserProfile } from '../ducks/privateUserDuck';
 import { handleGetUserProfile } from './handlers/privateUserHandler';
-import { getTopTracks } from '../ducks/personalizationDuck';
-import { handleGetTopTracks } from './handlers/personalizationHandler';
+import { getTopArtists, getTopTracks } from '../ducks/personalizationDuck';
+import {
+  handleGetTopArtists,
+  handleGetTopTracks,
+} from './handlers/personalizationHandler';
 
 export function* watcherSaga() {
   yield takeLatest(checkAuthCode.type, handleCheckAuthCode);
@@ -17,4 +20,5 @@ export function* watcherSaga() {
   yield takeLatest(getUser.type, handleGetUser);
   yield takeLatest(getUserProfile.type, handleGetUserProfile);
   yield takeLatest(getTopTracks.type, handleGetTopTracks);
+  yield takeLatest(getTopArtists.type, handleGetTopArtists);
 }

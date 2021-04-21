@@ -6,13 +6,7 @@ import { Select } from '@blueprintjs/select';
 import SongTile from '../../../components/music-analysis/SongTile';
 import { getTopTracks } from '../../../redux/ducks/personalizationDuck';
 
-const timeRanges = [
-  { data: 'short_term', text: 'Short Term' },
-  { data: 'medium_term', text: 'Medium Term' },
-  { data: 'long_term', text: 'Long Term' },
-];
-
-export default function TopTracks() {
+export default function TopTracks({ timeRanges }) {
   // Redux data
   const { code } = useSelector((state) => state.authorization);
   const { topTracks } = useSelector((state) => state.personalization);

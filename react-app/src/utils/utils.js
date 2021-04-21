@@ -13,3 +13,14 @@ export function generateRandomString(length) {
   }
   return text;
 }
+
+/**
+ * Capitalize the first letter of each word
+ */
+export function toTitleCase(text) {
+  return text
+    .toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .join(' ');
+}
