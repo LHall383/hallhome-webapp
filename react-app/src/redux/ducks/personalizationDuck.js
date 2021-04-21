@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { timeRanges } from '../../components/music-analysis/TimeRangeSelect';
+
 const personalizationSlice = createSlice({
   name: 'privateUser',
   initialState: {
     topTracks: undefined,
+    topTracksParams: { timeRange: timeRanges[0].data, number: 50 },
     topArtists: undefined,
+    topArtistsParams: { timeRange: timeRanges[0].data, number: 50 },
   },
   reducers: {
     getTopTracks() {},
