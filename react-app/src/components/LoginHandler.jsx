@@ -71,7 +71,8 @@ export default function MusicAnalysis() {
       QueryString.stringify({
         response_type: 'code',
         client_id: process.env.REACT_APP_CLIENT_ID,
-        scope: 'user-read-private user-read-email user-top-read',
+        scope:
+          'user-read-private user-read-email user-top-read user-read-recently-played',
         redirect_uri: redirectUri,
         state: stateString,
       });

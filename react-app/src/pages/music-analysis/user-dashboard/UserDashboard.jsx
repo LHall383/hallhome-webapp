@@ -10,6 +10,7 @@ import { useLocation } from 'react-router';
 import { getUserProfile } from '../../../redux/ducks/privateUserDuck';
 import TopTracks from './TopTracks';
 import TopArtists from './TopArtists';
+import ListeningHistory from './ListeningHistory';
 
 export default function UserDashboard() {
   // Redux data
@@ -53,13 +54,19 @@ export default function UserDashboard() {
             title="Top Tracks"
             className="dashboard-tab"
             panel={<TopTracks />}
-          ></Tab>
+          />
           <Tab
             id="top-artists"
             title="Top Artists"
             className="dashboard-tab"
             panel={<TopArtists />}
-          ></Tab>
+          />
+          <Tab
+            id="listening-history"
+            title="Listening History"
+            className="dashboard-tab"
+            panel={<ListeningHistory />}
+          />
         </Tabs>
       </div>
     );
