@@ -2,7 +2,7 @@ import '../../Pages.scss';
 import '../../../components/Components.scss';
 import './UserDashboard.scss';
 
-import { H3, H4, Icon, Tab, Tabs, Text } from '@blueprintjs/core';
+import { H3, Icon, Tab, Tabs, Text } from '@blueprintjs/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
