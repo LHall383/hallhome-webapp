@@ -1,13 +1,12 @@
 import React from 'react';
 
 import Tile from './Tile';
+import { durationToMinSec } from '../../utils/utils';
 
 export default function SongTile(props) {
   const { name, album, artists, duration_ms, uri } = props.songData;
 
   // do some data preprocessing here for popover text
-  const min = Math.floor(duration_ms / 1000 / 60);
-  const sec = Math.floor(((duration_ms / 1000 / 60) % 1) * 60);
   const artistsLabel = 'Artist' + (artists.length > 1 ? 's' : '') + ':';
   const artistsString = artists
     .map((e) => e.name)
@@ -15,7 +14,7 @@ export default function SongTile(props) {
   const popoverLines = [
     { label: 'Album:', value: album.name },
     { label: artistsLabel, value: artistsString },
-    { label: 'Duration:', value: min + ':' + ('00' + sec).slice(-2) },
+    { label: 'Duration:', value: durationToMinSec(duration_ms) },
   ];
 
   const imageUrl = album.images[0].url;

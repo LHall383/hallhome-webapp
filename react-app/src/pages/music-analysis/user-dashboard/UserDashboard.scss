@@ -1,5 +1,7 @@
 .dashboard-tab {
-  font-size: 18pt;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .bp3-tab-list {
@@ -12,4 +14,21 @@
   justify-content: center;
   margin-bottom: 10px;
   font-size: 14px;
+}
+
+// top tracks / top artists
+.tile-container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80vw;
+}
+
+// listening history
+.listening-history-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80vw;
 }

@@ -2,7 +2,7 @@ import '../../Pages.scss';
 import '../../../components/Components.scss';
 import './UserDashboard.scss';
 
-import { H3, Tab, Tabs } from '@blueprintjs/core';
+import { H3, Icon, Tab, Tabs, Text } from '@blueprintjs/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
@@ -10,6 +10,7 @@ import { useLocation } from 'react-router';
 import { getUserProfile } from '../../../redux/ducks/privateUserDuck';
 import TopTracks from './TopTracks';
 import TopArtists from './TopArtists';
+import ListeningHistory from './ListeningHistory';
 
 export default function UserDashboard() {
   // Redux data
@@ -39,27 +40,39 @@ export default function UserDashboard() {
     setSelectedTab(newTabId);
   };
 
+  const createTabTitle = (icon, text) => {
+    return (
+      <div className="dashboard-tab">
+        <Icon icon={icon} style={{ marginRight: '5px' }} />
+        <Text>{text}</Text>
+      </div>
+    );
+  };
+
   if (loggedIn) {
     return (
       <div className="page-wrapper">
         <Tabs
           id="dashboard-tabs"
-          animate={false}
+          animate={true}
           selectedTabId={selectedTab}
           onChange={handleTabChange}
         >
           <Tab
             id="top-tracks"
-            title="Top Tracks"
-            className="dashboard-tab"
+            title={createTabTitle('music', 'Top Songs')}
             panel={<TopTracks />}
-          ></Tab>
+          />
           <Tab
             id="top-artists"
-            title="Top Artists"
-            className="dashboard-tab"
+            title={createTabTitle('person', 'Top Artists')}
             panel={<TopArtists />}
-          ></Tab>
+          />
+          <Tab
+            id="listening-history"
+            title={createTabTitle('history', 'Listening History')}
+            panel={<ListeningHistory />}
+          />
         </Tabs>
       </div>
     );

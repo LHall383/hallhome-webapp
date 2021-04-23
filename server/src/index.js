@@ -10,6 +10,7 @@ const authorization = require("./spotify-api/authorization/authorization");
 const privateUser = require("./spotify-api/user-profiles-api/privateUser");
 const top = require("./spotify-api/personalization-api/top");
 const getTracks = require("./spotify-api/tracks-api/getTracks");
+const recentlyPlayed = require("./spotify-api/player-api/recentlyPlayed");
 
 // Get port from environment variables or fallback to 3001
 const PORT = process.env.PORT || 3001;
@@ -195,6 +196,45 @@ app.get("/tracks", async (req, res) => {
   );
 
   res.json(trackData);
+});
+
+/**
+ * Get recently played tracks
+ */
+app.get("/player/recentlyPlayed", async (req, res) => {
+  console.log(
+    "\n\nrecently played tracks " + req.query.before
+      ? `before ${req.query.before}`
+      : `after ${req.query.after}`
+  );
+
+  if (!userAuthTokens[req.query.code]) {
+    res.json(undefined);
+    return;
+  }
+
+  const authInfo = userAuthTokens[req.query.code];
+  if (req.query.before) {
+    const trackData = await recentlyPlayed.getPlayedBefore(
+      authInfo.access_token,
+      req.query.limit,
+      req.query.before
+    );
+    res.json(trackData);
+  } else if (req.query.after) {
+    const trackData = await recentlyPlayed.getPlayedAfter(
+      authInfo.access_token,
+      req.query.limit,
+      req.query.after
+    );
+    res.json(trackData);
+  } else {
+    const trackData = await recentlyPlayed.getPlayed(
+      authInfo.access_token,
+      req.query.limit
+    );
+    res.json(trackData);
+  }
 });
 
 // Start the application

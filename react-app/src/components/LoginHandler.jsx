@@ -71,7 +71,8 @@ export default function MusicAnalysis() {
       QueryString.stringify({
         response_type: 'code',
         client_id: process.env.REACT_APP_CLIENT_ID,
-        scope: 'user-read-private user-read-email user-top-read',
+        scope:
+          'user-read-private user-read-email user-top-read user-read-recently-played',
         redirect_uri: redirectUri,
         state: stateString,
       });
@@ -113,6 +114,11 @@ export default function MusicAnalysis() {
               icon="person"
               text="Top Artists"
               onClick={() => handleNav('top-artists')}
+            />
+            <MenuItem
+              icon="history"
+              text="Listening History"
+              onClick={() => handleNav('listening-history')}
             />
             <MenuDivider title="Account" />
             <MenuItem icon="log-out" text="Logout" onClick={handleLogout} />
