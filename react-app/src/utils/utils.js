@@ -58,5 +58,5 @@ export function dateToDateTimeString(date) {
     );
   }
 
-  return date.toLocaleDateString('en-US');
+  return date.toISOString().slice(0, 10);
 }

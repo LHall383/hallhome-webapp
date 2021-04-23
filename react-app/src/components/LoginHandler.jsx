@@ -115,6 +115,11 @@ export default function MusicAnalysis() {
               text="Top Artists"
               onClick={() => handleNav('top-artists')}
             />
+            <MenuItem
+              icon="history"
+              text="Listening History"
+              onClick={() => handleNav('listening-history')}
+            />
             <MenuDivider title="Account" />
             <MenuItem icon="log-out" text="Logout" onClick={handleLogout} />
           </Menu>

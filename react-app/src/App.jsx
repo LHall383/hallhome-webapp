@@ -23,7 +23,7 @@ export default function App() {
               <Text>Home</Text>
             </Link>
             <Link className="bp3-button bp3-minimal" to="/music-analysis">
-              <Icon icon="music" />
+              <Icon icon="timeline-line-chart" />
               <Text>Music Analysis</Text>
             </Link>
           </Navbar.Group>

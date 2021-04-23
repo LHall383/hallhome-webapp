@@ -1,8 +1,7 @@
 .dashboard-tab {
   font-size: 20px;
-}
-.dashboard-tab > * {
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .bp3-tab-list {
@@ -23,7 +22,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 80vw;
+  width: 80vw;
 }
 
 // listening history
