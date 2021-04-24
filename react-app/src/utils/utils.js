@@ -54,7 +54,7 @@ export function dateToDateTimeString(date) {
       ('00' + date.getMinutes()).slice(-2) +
       ':' +
       ('00' + date.getSeconds()).slice(-2) +
-      (isPM ? ' AM' : ' PM')
+      (isPM ? ' PM' : ' AM')
     );
   }
 
