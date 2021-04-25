@@ -1,5 +1,5 @@
 // Import the css files for normalize and blueprint app-wide
-import './index.css';
+import './index.scss';
 import 'normalize.css/normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
