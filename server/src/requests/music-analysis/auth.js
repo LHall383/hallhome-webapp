@@ -46,3 +46,25 @@ module.exports.getAuthorizationCode = async (code, redirect_uri) => {
     console.log(error);
   }
 };
+
+module.exports.refreshAuthorizationToken = async (refresh_token) => {
+  try {
+    const response = await axiosInstance({
+      method: "post",
+      url: "/token",
+      data: qs.stringify({
+        refresh_token: refresh_token,
+        grant_type: "refresh_token",
+      }),
+      auth: {
+        username: process.env.CLIENT_ID,
+        password: process.env.CLIENT_SECRET,
+      },
+    });
+
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -16,10 +16,8 @@ router
   .get("/tracks", async (req, res) => {
     console.log("\n\n Top tracks for: " + req.query.code);
 
-    const accessToken = authData.getToken(req.query.code);
+    const accessToken = await authData.getToken(req.query.code);
     if (accessToken) {
-      console.log(accessToken);
-
       const tracks = await topRequests.getUserTopTracks(
         accessToken,
         req.query.time_range,
@@ -43,10 +41,8 @@ router
   .get("/artists", async (req, res) => {
     console.log("\n\n Top artists for: " + req.query.code);
 
-    const accessToken = authData.getToken(req.query.code);
+    const accessToken = await authData.getToken(req.query.code);
     if (accessToken) {
-      console.log(accessToken);
-
       const artists = await topRequests.getUserTopArtists(
         accessToken,
         req.query.time_range,

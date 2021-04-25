@@ -36,7 +36,7 @@ s = paramiko.SSHClient()
 s.load_system_host_keys(filename=config['known_hosts'])
 s.connect(hostname=config['host_name'], username=config['uname'], password=config['pw'])
 
-print("Reloading webapp with {}".format(config["reload_cmd"]))
+print("Reloading webapp with '{}'".format(config["reload_cmd"]))
 (stdin, stdout, stderr) = s.exec_command(config["reload_cmd"])
 print(stdout.readlines())
 s.close()

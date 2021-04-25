@@ -17,7 +17,7 @@ router
         : ""
     );
 
-    const accessToken = authData.getToken(req.query.code);
+    const accessToken = await authData.getToken(req.query.code);
     if (!accessToken) {
       res.json(undefined);
       return;
