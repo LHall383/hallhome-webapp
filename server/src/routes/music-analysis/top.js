@@ -48,7 +48,7 @@ router
       console.log(accessToken);
 
       const artists = await topRequests.getUserTopArtists(
-        authInfo.access_token,
+        accessToken,
         req.query.time_range,
         req.query.limit,
         req.query.offset

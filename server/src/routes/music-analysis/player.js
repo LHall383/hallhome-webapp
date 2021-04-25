@@ -1,5 +1,6 @@
 const express = require("express");
 const authorizationData = require("../../data/music-analysis/auth");
+const recentlyPlayedRequests = require("../../requests/music-analysis/player-api/recentlyPlayed");
 
 const router = express.Router();
 
@@ -23,21 +24,21 @@ router
     }
 
     if (req.query.before) {
-      const trackData = await recentlyPlayed.getPlayedBefore(
+      const trackData = await recentlyPlayedRequests.getPlayedBefore(
         accessToken,
         req.query.limit,
         req.query.before
       );
       res.json(trackData);
     } else if (req.query.after) {
-      const trackData = await recentlyPlayed.getPlayedAfter(
+      const trackData = await recentlyPlayedRequests.getPlayedAfter(
         accessToken,
         req.query.limit,
         req.query.after
       );
       res.json(trackData);
     } else {
-      const trackData = await recentlyPlayed.getPlayed(
+      const trackData = await recentlyPlayedRequests.getPlayed(
         accessToken,
         req.query.limit
       );

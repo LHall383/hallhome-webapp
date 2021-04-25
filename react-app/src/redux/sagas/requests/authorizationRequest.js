@@ -3,7 +3,7 @@ import axiosInstance from '../../../utils/customAxios';
 export function requestAccessToken(code, redirect_uri) {
   return axiosInstance({
     method: 'get',
-    url: '/authCodeSubmit',
+    url: '/music-analysis/auth/submit-code',
     params: { code, redirect_uri },
   });
 }
@@ -11,7 +11,7 @@ export function requestAccessToken(code, redirect_uri) {
 export function checkAuthCode(code) {
   return axiosInstance({
     method: 'get',
-    url: '/auth/isCodeValid',
+    url: '/music-analysis/auth/is-code-valid',
     params: { code },
   });
 }

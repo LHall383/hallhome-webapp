@@ -10,7 +10,7 @@ router
    * Params:
    *    code - code provided by Spotify from user authentication
    */
-  .get("/isCodeValid", async (req, res) => {
+  .get("/is-code-valid", async (req, res) => {
     console.log("\n\n Check if code has valid token: " + req.query.code);
 
     const accessToken = authorizationData.getToken(req.query.code);
@@ -29,7 +29,7 @@ router
    *    code         - code provided by Spotify from user authentication
    *    redirect_uri - the URI used for the redirect in the inital request
    */
-  .get("/authCodeSubmit", async (req, res) => {
+  .get("/submit-code", async (req, res) => {
     console.log("\n\n Submit auth code for token, code: " + req.query.code);
     console.log(req.query.redirect_uri);
     const authData = await authorizationRequests.getAuthorizationCode(
