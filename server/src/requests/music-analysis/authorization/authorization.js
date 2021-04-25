@@ -1,4 +1,4 @@
-const axiosInstance = require("../../utils/customAxios")
+const axiosInstance = require("../../../utils/customAxios")
   .axiosSpotifyAuthorization;
 const qs = require("qs");
 require("dotenv").config();

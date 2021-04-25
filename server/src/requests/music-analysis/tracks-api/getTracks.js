@@ -1,4 +1,4 @@
-const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
+const axiosInstance = require("../../../utils/customAxios").axiosSpotifyAPI;
 const qs = require("qs");
 
 module.exports.getTrack = async (trackId, token) => {

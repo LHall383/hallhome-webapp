@@ -1,4 +1,4 @@
-const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
+const axiosInstance = require("../../../utils/customAxios").axiosSpotifyAPI;
 
 module.exports.getUserPrivate = async (authCodeToken) => {
   try {
