@@ -1,6 +1,6 @@
 const express = require("express");
-const authorizationData = require("../../data/music-analysis/auth");
-const topRequests = require("../../requests/music-analysis/personalization-api/top");
+const authData = require("../../data/music-analysis/auth");
+const topRequests = require("../../requests/music-analysis/top");
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router
   .get("/tracks", async (req, res) => {
     console.log("\n\n Top tracks for: " + req.query.code);
 
-    const accessToken = authorizationData.getToken(req.query.code);
+    const accessToken = authData.getToken(req.query.code);
     if (accessToken) {
       console.log(accessToken);
 
@@ -43,7 +43,7 @@ router
   .get("/artists", async (req, res) => {
     console.log("\n\n Top artists for: " + req.query.code);
 
-    const accessToken = authorizationData.getToken(req.query.code);
+    const accessToken = authData.getToken(req.query.code);
     if (accessToken) {
       console.log(accessToken);
 

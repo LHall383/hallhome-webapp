@@ -1,6 +1,6 @@
 const express = require("express");
-const authorizationRequests = require("../../requests/music-analysis/authorization/authorization");
-const getTracksRequests = require("../../requests/music-analysis/tracks-api/getTracks");
+const authRequests = require("../../requests/music-analysis/auth");
+const tracksRequests = require("../../requests/music-analysis/tracks");
 
 const router = express.Router();
 
@@ -13,8 +13,8 @@ router
   .get("/", async (req, res) => {
     console.log("\n\n Track information for: " + req.query.trackIds);
 
-    const authData = await authorizationRequests.getClientCredentials();
-    const trackData = await getTracksRequests.getTracks(
+    const authData = await authRequests.getClientCredentials();
+    const trackData = await tracksRequests.getTracks(
       req.query.trackIds,
       authData.access_token
     );

@@ -1,8 +1,7 @@
 const express = require("express");
-const authorizationRequests = require("../../requests/music-analysis/authorization/authorization");
-const authorizationData = require("../../data/music-analysis/auth");
-const publicUserRequests = require("../../requests/music-analysis/user-profiles-api/publicUser");
-const privateUserRequests = require("../../requests/music-analysis/user-profiles-api/privateUser");
+const authRequests = require("../../requests/music-analysis/auth");
+const authData = require("../../data/music-analysis/auth");
+const profileRequests = require("../../requests/music-analysis/profile");
 
 const router = express.Router();
 
@@ -14,8 +13,8 @@ router
    */
   .get("/public", async (req, res) => {
     console.log("\n\n Public user data for: " + req.query.username);
-    const authData = await authorizationRequests.getClientCredentials();
-    const userData = await publicUserRequests.getUserPublic(
+    const authData = await authRequests.getClientCredentials();
+    const userData = await profileRequests.getUserPublic(
       req.query.username,
       authData.access_token
     );
@@ -30,11 +29,11 @@ router
   .get("/private", async (req, res) => {
     console.log("\n\n Private user data for: " + req.query.code);
 
-    const accessToken = authorizationData.getToken(req.query.code);
+    const accessToken = authData.getToken(req.query.code);
 
     if (accessToken) {
       console.log(accessToken);
-      const userData = await privateUserRequests.getUserPrivate(accessToken);
+      const userData = await profileRequests.getUserPrivate(accessToken);
       res.status(200).json(userData);
     } else {
       res.status(400).json(undefined);

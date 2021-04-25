@@ -16,8 +16,8 @@ app.use(cors(corsOptions)); /* Allow requests from the frontend */
 app.use(cookieParser()); /* Enable cookies, for use with auth state */
 
 // Import our Routes
-const testRoutes = require("./routes/test");
-const musicAnalysisRoutes = require("./routes/music-analysis");
+const testRoutes = require("./routes/test/all");
+const musicAnalysisRoutes = require("./routes/music-analysis/all");
 
 // Add our routes here
 app.use("/test", testRoutes);

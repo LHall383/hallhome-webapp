@@ -1,5 +1,5 @@
 const express = require("express");
-const authorizationRequests = require("../requests/music-analysis/authorization/authorization");
+const authRequests = require("../../requests/music-analysis/auth");
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router
   })
   .get("/cc-auth", async (req, res) => {
     console.log("\n\n Client credentials auth test");
-    const authData = await authorizationRequests.getClientCredentials();
+    const authData = await authRequests.getClientCredentials();
     res.json(authData);
   });
 

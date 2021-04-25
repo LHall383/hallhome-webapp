@@ -1,5 +1,5 @@
 const express = require("express");
-const authorizationRequests = require("../../requests/music-analysis/authorization/authorization");
+const authorizationRequests = require("../../requests/music-analysis/auth");
 const authorizationData = require("../../data/music-analysis/auth");
 
 const router = express.Router();
