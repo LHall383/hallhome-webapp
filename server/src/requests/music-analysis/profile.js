@@ -1,13 +1,12 @@
 const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
-const qs = require("qs");
 
-module.exports.getTrack = async (trackId, token) => {
+module.exports.getUserPublic = async (username, bearerToken) => {
   try {
     const response = await axiosInstance({
       method: "get",
-      url: "/tracks/" + trackId,
+      url: "/users/" + username,
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + bearerToken,
       },
     });
 
@@ -18,14 +17,13 @@ module.exports.getTrack = async (trackId, token) => {
   }
 };
 
-module.exports.getTracks = async (trackIds, token) => {
+module.exports.getUserPrivate = async (authCodeToken) => {
   try {
     const response = await axiosInstance({
       method: "get",
-      url: "/tracks",
-      params: { ids: trackIds },
+      url: "/me",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + authCodeToken,
       },
     });
 
