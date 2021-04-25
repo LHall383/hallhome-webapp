@@ -13,13 +13,13 @@ router
   .get("/is-code-valid", async (req, res) => {
     console.log("\n\n Check if code has valid token: " + req.query.code);
 
-    const accessToken = authorizationData.getToken(req.query.code);
+    const accessToken = await authorizationData.getToken(req.query.code);
 
     if (accessToken) {
-      console.log(accessToken);
+      console.log("Valid token");
       res.status(200).json({ valid: true });
     } else {
-      console.log("Not valid");
+      console.log("Not a valid token");
       res.status(200).json({ valid: false });
     }
   })

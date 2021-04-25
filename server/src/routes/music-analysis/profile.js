@@ -29,10 +29,9 @@ router
   .get("/private", async (req, res) => {
     console.log("\n\n Private user data for: " + req.query.code);
 
-    const accessToken = authData.getToken(req.query.code);
+    const accessToken = await authData.getToken(req.query.code);
 
     if (accessToken) {
-      console.log(accessToken);
       const userData = await profileRequests.getUserPrivate(accessToken);
       res.status(200).json(userData);
     } else {

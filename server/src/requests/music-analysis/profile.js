@@ -10,7 +10,7 @@ module.exports.getUserPublic = async (username, bearerToken) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -27,7 +27,7 @@ module.exports.getUserPrivate = async (authCodeToken) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);

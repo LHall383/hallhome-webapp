@@ -10,7 +10,7 @@ module.exports.getTrack = async (trackId, token) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -28,7 +28,7 @@ module.exports.getTracks = async (trackIds, token) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);

@@ -11,7 +11,7 @@ module.exports.getPlayed = async (authCodeToken, limit) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -29,7 +29,7 @@ module.exports.getPlayedAfter = async (authCodeToken, limit, after) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -47,7 +47,7 @@ module.exports.getPlayedBefore = async (authCodeToken, limit, before) => {
       },
     });
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
