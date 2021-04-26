@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
 require("dotenv").config();
 
 // Get port from environment variables or fallback to 3001
@@ -14,6 +15,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions)); /* Allow requests from the frontend */
 app.use(cookieParser()); /* Enable cookies, for use with auth state */
+app.use(morgan("dev")); /* Add in logging through morgan */
 
 // Import our Routes
 const testRoutes = require("./routes/test/all");

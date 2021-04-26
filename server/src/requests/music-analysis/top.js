@@ -1,4 +1,5 @@
 const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
+const { logError } = require("../../utils/logging");
 
 module.exports.getUserTopTracks = async (
   authCodeToken,
@@ -16,10 +17,9 @@ module.exports.getUserTopTracks = async (
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getUserTopTracks", error);
   }
 };
 
@@ -39,9 +39,8 @@ module.exports.getUserTopArtists = async (
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getUserTopArtists", error);
   }
 };

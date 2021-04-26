@@ -1,4 +1,5 @@
 const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
+const { logError } = require("../../utils/logging");
 
 module.exports.getUserPublic = async (username, bearerToken) => {
   try {
@@ -10,10 +11,9 @@ module.exports.getUserPublic = async (username, bearerToken) => {
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getUserPublic", error);
   }
 };
 
@@ -27,9 +27,8 @@ module.exports.getUserPrivate = async (authCodeToken) => {
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getUserPrivate", error);
   }
 };

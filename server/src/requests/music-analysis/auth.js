@@ -1,5 +1,6 @@
 const axiosInstance = require("../../utils/customAxios")
   .axiosSpotifyAuthorization;
+const { logError } = require("../../utils/logging");
 const qs = require("qs");
 require("dotenv").config();
 
@@ -17,10 +18,9 @@ module.exports.getClientCredentials = async () => {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getClientCredentials", error);
   }
 };
 
@@ -40,10 +40,9 @@ module.exports.getAuthorizationCode = async (code, redirect_uri) => {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getAuthorizationCode", error);
   }
 };
 
@@ -62,9 +61,8 @@ module.exports.refreshAuthorizationToken = async (refresh_token) => {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("refreshAuthorizationToken", error);
   }
 };

@@ -14,8 +14,6 @@ router
    *    offset - Offset from 0, used to get a complete history
    */
   .get("/tracks", async (req, res) => {
-    console.log("\n\n Top tracks for: " + req.query.code);
-
     const accessToken = await authData.getToken(req.query.code);
     if (accessToken) {
       const tracks = await topRequests.getUserTopTracks(
@@ -27,7 +25,7 @@ router
 
       res.status(200).json(tracks);
     } else {
-      res.json(undefined).status(400);
+      res.status(400).json(undefined);
     }
   })
   /**
@@ -39,8 +37,6 @@ router
    *    offset - Offset from 0, used to get a complete history
    */
   .get("/artists", async (req, res) => {
-    console.log("\n\n Top artists for: " + req.query.code);
-
     const accessToken = await authData.getToken(req.query.code);
     if (accessToken) {
       const artists = await topRequests.getUserTopArtists(
@@ -52,7 +48,7 @@ router
 
       res.status(200).json(artists);
     } else {
-      res.json(undefined).status(400);
+      res.status(400).json(undefined);
     }
   });
 
