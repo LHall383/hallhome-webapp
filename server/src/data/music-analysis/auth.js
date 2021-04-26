@@ -24,8 +24,10 @@ const setAuthData = (code, authData) => {
       expire_time,
     };
   }
-  console.log(`${code} ->`);
-  console.log(userAuthTokens[code]);
+
+  console.log(
+    `Stored auth data: ${code} -> ${JSON.stringify(userAuthTokens[code])}`
+  );
 };
 
 const getToken = async (code) => {

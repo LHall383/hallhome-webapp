@@ -12,8 +12,11 @@ router
    *    username - the username of the user to get data for
    */
   .get("/public", async (req, res) => {
-    console.log("\n\n Public user data for: " + req.query.username);
     const authData = await authRequests.getClientCredentials();
+    if (!authData) {
+      res.json(undefined);
+      return;
+    }
     const userData = await profileRequests.getUserPublic(
       req.query.username,
       authData.access_token
@@ -27,8 +30,6 @@ router
    *           actual auth token
    */
   .get("/private", async (req, res) => {
-    console.log("\n\n Private user data for: " + req.query.code);
-
     const accessToken = await authData.getToken(req.query.code);
 
     if (accessToken) {

@@ -11,8 +11,6 @@ router
    *     trackIds - list of ids to retreive data for
    */
   .get("/", async (req, res) => {
-    console.log("\n\n Track information for: " + req.query.trackIds);
-
     const authData = await authRequests.getClientCredentials();
     const trackData = await tracksRequests.getTracks(
       req.query.trackIds,

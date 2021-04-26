@@ -1,4 +1,5 @@
 const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
+const { logError } = require("../../utils/logging");
 
 module.exports.getPlayed = async (authCodeToken, limit) => {
   try {
@@ -11,10 +12,9 @@ module.exports.getPlayed = async (authCodeToken, limit) => {
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getPlayed", error);
   }
 };
 
@@ -29,10 +29,9 @@ module.exports.getPlayedAfter = async (authCodeToken, limit, after) => {
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getPlayedAfter", error);
   }
 };
 
@@ -47,9 +46,8 @@ module.exports.getPlayedBefore = async (authCodeToken, limit, before) => {
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getPlayedBefore", error);
   }
 };

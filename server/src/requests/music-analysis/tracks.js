@@ -1,4 +1,5 @@
 const axiosInstance = require("../../utils/customAxios").axiosSpotifyAPI;
+const { logError } = require("../../utils/logging");
 
 module.exports.getTrack = async (trackId, token) => {
   try {
@@ -13,7 +14,7 @@ module.exports.getTrack = async (trackId, token) => {
     // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getTrack", error);
   }
 };
 
@@ -28,9 +29,8 @@ module.exports.getTracks = async (trackIds, token) => {
       },
     });
 
-    // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    logError("getTracks", error);
   }
 };

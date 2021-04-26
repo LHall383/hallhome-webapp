@@ -9,14 +9,6 @@ router
    * Get recently played tracks
    */
   .get("/recently-played", async (req, res) => {
-    console.log(
-      "\n\n Recently played tracks " + (req.query.before || req.query.after)
-        ? req.query.before
-          ? `before ${req.query.before}`
-          : `after ${req.query.after}`
-        : ""
-    );
-
     const accessToken = await authData.getToken(req.query.code);
     if (!accessToken) {
       res.json(undefined);
