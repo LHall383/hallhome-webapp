@@ -3,12 +3,11 @@ import '../Components.scss';
 import React from 'react';
 import { Callout, Text } from '@blueprintjs/core';
 
-import { durationToMinSec, dateToDateTimeString } from '../../utils/utils';
+import { durationToMinSec, isoToTimeOrDate } from '../../utils/utils';
 
 export default function SongEntry({ item }) {
   const { track, played_at } = item;
   const { name: trackName, artists, duration_ms } = track;
-  const date = new Date(played_at);
   const artistsString = artists
     .map((e) => e.name)
     .reduce((acc, current) => acc + ', ' + current);
@@ -41,7 +40,7 @@ export default function SongEntry({ item }) {
         className="bp3-text-normal song-entry-played-at"
         ellipsize={true}
       >
-        {dateToDateTimeString(date)}
+        {isoToTimeOrDate(played_at)}
       </Text>
       <Text
         tagName="span"

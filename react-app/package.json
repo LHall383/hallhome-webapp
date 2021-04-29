@@ -13,6 +13,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
     "axios": "^0.21.1",
+    "luxon": "^1.26.0",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
     "qs": "^6.10.1",
