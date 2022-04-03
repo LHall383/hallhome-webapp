@@ -1,7 +1,7 @@
 {
   "name": "hallhome-webapp",
   "version": "1.0.0",
-  "description": "Web app for https://thehallho.me",
+  "description": "Web app for https://hallhome.site",
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
