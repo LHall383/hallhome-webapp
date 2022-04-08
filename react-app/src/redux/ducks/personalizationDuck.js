@@ -22,6 +22,7 @@ const personalizationSlice = createSlice({
   },
 });
 
+// prettier-ignore
 export const {
   getTopTracks,
   setTopTracks,
