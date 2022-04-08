@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import { Card, Elevation, H1, H4, Text } from '@blueprintjs/core';
 
 const linkNextcloud = function linkNextcloud() {
-  window.location.replace('http://cloud.thehallho.me');
+  window.location.replace('http://cloud.hallhome.site');
 };
 
 export default function Home() {
