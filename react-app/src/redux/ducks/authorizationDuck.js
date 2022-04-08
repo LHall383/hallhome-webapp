@@ -8,7 +8,7 @@ const authorizationSlice = createSlice({
     authUrl: undefined,
     redirectUri:
       process.env.NODE_ENV === 'production'
-        ? 'https://thehallho.me/music-analysis/callback'
+        ? 'https://hallhome.site/music-analysis/callback'
         : 'http://localhost:3000/music-analysis/callback',
   },
   reducers: {

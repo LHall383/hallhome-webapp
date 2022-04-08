@@ -13,7 +13,7 @@ router
       res.json(undefined);
       return;
     }
-    res.json(authData);
+    res.json({ message: "Got valid auth data." });
   });
 
 module.exports = router;
