@@ -23,35 +23,35 @@ export default function ListeningHistory() {
       <div className="song-entry-wrapper">
         <Text
           tagName="span"
-          className="bp3-text-large song-entry-name"
+          className="bp4-text-large song-entry-name"
           ellipsize={true}
         >
           <strong>Track</strong>
         </Text>
         <Text
           tagName="span"
-          className="bp3-text-large song-entry-artist"
+          className="bp4-text-large song-entry-artist"
           ellipsize={true}
         >
           <strong>Artist</strong>
         </Text>
         <Text
           tagName="span"
-          className="bp3-text-large song-entry-album"
+          className="bp4-text-large song-entry-album"
           ellipsize={true}
         >
           <strong>Album</strong>
         </Text>
         <Text
           tagName="span"
-          className="bp3-text-large song-entry-played-at"
+          className="bp4-text-large song-entry-played-at"
           ellipsize={true}
         >
           <strong>Time Played</strong>
         </Text>
         <Text
           tagName="span"
-          className="bp3-text-normal song-entry-duration"
+          className="bp4-text-normal song-entry-duration"
           ellipsize={true}
         >
           <Icon icon="time" />

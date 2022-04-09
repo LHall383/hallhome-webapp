@@ -27,10 +27,10 @@ export default function Tile({ popoverLines, imageUrl, labelText, uri }) {
             {popoverLines.map((line, i) => {
               return (
                 <span key={line.label} className="popover-line">
-                  <Text className="bp3-text-large popover-label">
+                  <Text className="bp4-text-large popover-label">
                     {line.label}
                   </Text>
-                  <Text className="bp3-text-large">{line.value}</Text>
+                  <Text className="bp4-text-large">{line.value}</Text>
                 </span>
               );
             })}
@@ -54,7 +54,7 @@ export default function Tile({ popoverLines, imageUrl, labelText, uri }) {
             style={{ backgroundImage: `url(${imageUrl})` }}
           ></Card>
           <div className="name-banner">
-            <Text className="bp3-text-large" ellipsize={true}>
+            <Text className="bp4-text-large" ellipsize={true}>
               {labelText}
             </Text>
           </div>
