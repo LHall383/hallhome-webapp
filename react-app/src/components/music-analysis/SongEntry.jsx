@@ -16,35 +16,35 @@ export default function SongEntry({ item }) {
     <Callout className="song-entry-wrapper">
       <Text
         tagName="span"
-        className="bp3-text-normal song-entry-name"
+        className="bp4-text-normal song-entry-name"
         ellipsize={true}
       >
         {trackName}
       </Text>
       <Text
         tagName="span"
-        className="bp3-text-normal song-entry-artist"
+        className="bp4-text-normal song-entry-artist"
         ellipsize={true}
       >
         {artistsString}
       </Text>
       <Text
         tagName="span"
-        className="bp3-text-normal song-entry-album"
+        className="bp4-text-normal song-entry-album"
         ellipsize={true}
       >
         {track.album.name}
       </Text>
       <Text
         tagName="span"
-        className="bp3-text-normal song-entry-played-at"
+        className="bp4-text-normal song-entry-played-at"
         ellipsize={true}
       >
         {isoToTimeOrDate(played_at)}
       </Text>
       <Text
         tagName="span"
-        className="bp3-text-normal song-entry-duration"
+        className="bp4-text-normal song-entry-duration"
         ellipsize={true}
       >
         {durationToMinSec(duration_ms)}

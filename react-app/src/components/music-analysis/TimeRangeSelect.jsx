@@ -45,7 +45,7 @@ export default function TimeRangeSelect({ timeRange, setTimeRange }) {
 
   return (
     <div>
-      <Text className="bp3-text-large">Time Range</Text>
+      <Text className="bp4-text-large">Time Range</Text>
       <Select
         items={timeRanges}
         itemRenderer={renderTimeRange}

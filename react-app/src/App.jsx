@@ -12,17 +12,17 @@ import UserDashboard from './pages/music-analysis/user-dashboard/UserDashboard.j
 export default function App() {
   return (
     <Router>
-      <div className="App bp3-dark">
+      <div className="App bp4-dark">
         {/* Application navigation bar */}
         <Navbar>
           <Navbar.Group align={Alignment.LEFT}>
             <Navbar.Heading>The Hall Home</Navbar.Heading>
             <Navbar.Divider />
-            <Link className="bp3-button bp3-minimal" to="/">
+            <Link className="bp4-button bp4-minimal" to="/">
               <Icon icon="home" />
               <Text>Home</Text>
             </Link>
-            <Link className="bp3-button bp3-minimal" to="/music-analysis">
+            <Link className="bp4-button bp4-minimal" to="/music-analysis">
               <Icon icon="timeline-line-chart" />
               <Text>Music Analysis</Text>
             </Link>

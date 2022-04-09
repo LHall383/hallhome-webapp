@@ -1,9 +1,6 @@
 // Import the css files for normalize and blueprint app-wide
 import './index.scss';
 import 'normalize.css/normalize.css';
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

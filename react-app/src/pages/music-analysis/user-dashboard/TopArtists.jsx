@@ -43,7 +43,7 @@ export default function TopArtists() {
         </div>
 
         <div>
-          <Text className="bp3-text-large">Number of Tracks</Text>
+          <Text className="bp4-text-large">Number of Tracks</Text>
           <NumericInput
             clampValueOnBlur={true}
             selectAllOnFocus={true}
