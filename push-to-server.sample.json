@@ -1,11 +1,11 @@
 {
-  "known_hosts": "",
-  "host_name": "",
-  "uname": "",
-  "pw": "",
-  "remote_client_build_dir": "",
-  "local_client_build_dir": "",
-  "remote_server_build_dir": "",
-  "local_server_build_dir": "",
-  "reload_cmd": ""
+  "known_hosts": "C:\\Users\\<username>\\.ssh\\known_hosts",
+  "host_name": "192.168.XX.XXX",
+  "uname": "<remote username>",
+  "pw": "<remote password>",
+  "remote_client_build_dir": "path/to/client/deploy",
+  "local_client_build_dir": "path\\to\\client\\build",
+  "remote_server_build_dir": "path/to/server/deploy",
+  "local_server_build_dir": "path\\to\\server\\build",
+  "reload_cmd": "pm2 reload <service_name> --interpreter=/path/to/node/binary"
 }
