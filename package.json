@@ -4,6 +4,9 @@
   "description": "Web app for https://hallhome.site",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build-server && npm run build-client",
+    "build-server": "cd server && npm run build --if-present",
+    "build-client": "cd react-app && npm run build",
     "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
     "start-server": "cd server && npm run start-watch",
     "start-client": "cd react-app && npm run start",
