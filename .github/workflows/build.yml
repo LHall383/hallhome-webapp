@@ -14,9 +14,12 @@ jobs:
         node-version: [16.x]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            react-app/
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
@@ -25,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build --prefix react-app
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         with:
           name: react-app-build
           path: react-app/build
