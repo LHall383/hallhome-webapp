@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           sparse-checkout: |
-            react-app/**
+            react-app/
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
